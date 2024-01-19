@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.signUpVehicle.SignUpVehicleActivity"
+    android:background="@drawable/sign_up_alt2">
+
+    <Button
+        android:id="@+id/signUp_vehicle_finish_button"
+        android:layout_width="157dp"
+        android:layout_height="38dp"
+        android:backgroundTint="#00FFFFFF"
+        android:onClick="signUp_vehicle_finish"
+        android:text="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:background="#00FFFFFF" />
+
+    <Button
+        android:id="@+id/signUp_vehicle_back_button"
+        android:layout_width="165dp"
+        android:layout_height="37dp"
+        android:backgroundTint="#00FFFFFF"
+        android:onClick="signUp_vehicle_back"
+        android:text="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signUp_vehicle_finish_btn"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:background="#00FFFFFF" />
+
+    <EditText
+        android:id="@+id/signUpVehicle_brand_text"
+        android:layout_width="226dp"
+        android:layout_height="27dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@null"
+        android:inputType="text"
+        android:textColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.289" />
+
+    <EditText
+        android:id="@+id/signUpVehicle_model_text"
+        android:layout_width="226dp"
+        android:layout_height="28dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@null"
+        android:inputType="text"
+        android:textColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.388" />
+
+    <EditText
+        android:id="@+id/signUpVehicle_color_text"
+        android:layout_width="228dp"
+        android:layout_height="31dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@null"
+        android:inputType="text"
+        android:textColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <EditText
+        android:id="@+id/signUpVehicle_LicensePlate_text"
+        android:layout_width="228dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@null"
+        android:inputType="text"
+        android:textColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.584" />
+
+    <EditText
+        android:id="@+id/signUpVehicle_Size_text"
+        android:layout_width="224dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@null"
+        android:inputType="numberDecimal"
+        android:textColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

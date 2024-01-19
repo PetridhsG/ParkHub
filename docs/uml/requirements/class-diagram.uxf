@@ -1,0 +1,201 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>600</x><y>18</y><w>174</w><h>162</h></coordinates><panel_attributes>Address
+--
+- street: String
+- stNumber: Integer
+- city : String
+- region : String
+--
++ Address(street:String,
+stNumber:Integer,city:String,region:String)
++ getStreet() : String {query}
++ getStrNumber() : Integer {query}
++ getCity() : String {query}
++ getRegion() : String {query}
++ setStreet(street:String) 
++ setStrNumber(stNumber:Integer)
++ setCity(city:String)
++ setRegion(region:String) 
++ equals(o:Object)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>114</x><y>114</y><w>168</w><h>72</h></coordinates><panel_attributes>Rating
+--
+- rating: Double {readOnly}
+- comment: String {readOnly}
+--
++ Rating(rating: Double,comment: String)
++ getRating() : Double {query}
++ getComment() :String {query}
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>516</y><w>228</w><h>108</h></coordinates><panel_attributes>SearchingUser
+--
+- spotReservetion: SpotReservetion
+--
++ SearchingUser(name:String,surname:String,password:
+String,telephone:String,vehicle:Vehicle)
++ getSpotReservation() : SpotReservation {query}
++ setSpotReservation(sportReservation:SpotReservation)
++ reserverParkingSpot(agreement:Boolean,
+arrivalTime:Time,parkingSpot:ParkingSpot) : Boolean
++ declareFalseSpot() 
++ exchange() : Boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>804</x><y>78</y><w>144</w><h>102</h></coordinates><panel_attributes>Time
+--
+- hour:Integer
+- minute:Integer
+--
++ Time(hour:Integer,minute:Integer)
++ getHour(): Integer {readonly}
++ getMinute(): Integer {readonly}
++ setHour(hour:Integer) 
++ setMinute(minute:Integer)
++ equals(o:Object): Boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>228</y><w>228</w><h>420</h></coordinates><panel_attributes>User
+--
+_# uid:Integer = 0_
+# id:Integer 
+# name:String
+# surname:String
+# email:String
+# password:String
+# telephone:String
+# PBucks:Integer
+# averageDelayTime:Double
+# rating:Double
+# ratings:ArrayList&lt;Rating&gt;
+# vehicle:Vehicle
+# delay:Integer
+--
++ User(name:String,surname:String,password:String
+,telephone:String,vehicle:Vehicle)
++ getRatings(): ArrayList&lt;Rating&gt; {query}
++ getVehicle() : Vehicle {query}
++ getAverageDelayTime(): Double {query}
++ getRating() : Rating {query}
++ setRatings(ratings:ArrayList&lt;Rating&gt;)
++ getDelay(): Integer {query}
++ getUid(): Integer {query}
++ getId(): Integer {query}
++ getName(): String {query}
++ getSurname(): String {query}
++ getEmail(): String {query}
++ getPassword(): String {query}
++ getTelephone(): String {query}
++ getPBucks(): Integer {query}
++ setDelay(delay: Integer)
++ setName(name: String)
++ setSurname(surname: String)
++ setEmail(email: String)
++ setPassword(password: String)
++ setTelephone(telephone: String)
++ setPBucks(PBucks: Integer)
++ setVehicle(vehicle:Vehicle)
++ setAverageDelayTime(averageDelayTime:Double)
++ setRating(rating:Double)
++ PBucksRenewal(choice:Integer)
++ equals(o:Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>468</y><w>252</w><h>162</h></coordinates><panel_attributes>SpotReservation
+--
+-id: Integer
+_+ uid: Integer_
+-arrivalTime: Time
+-parkingSpot: ParkingSpot
+-spotExchange: SpotExchange
+--
++ SpotReservation(arrivalTime: Time, 
+parkingSpot: ParkingSpot, spotExchange: SpotExchange)
++ getId(): Integer {query}
++ getArrivalTime(): Time {query
++ getParkingSpot(): ParkingSpot {query}
++ getSpotexchange(): SpotExchange {query}
++ setArrivalTime(arrivalTime: Time)
++ setParkingSpot(parkingSpot : ParkingSpot)
++ setSpotExchange(spotExchange: SpotExchange)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>186</y><w>198</w><h>192</h></coordinates><panel_attributes>Vehicle
+--
+-color:String
+-size:Double
+-brand:String
+-model:String
+-licensePlate:String
+--
++Vehicle(color:String,size:Double,brand:String,
+model:String,licensePlate:String
++getColor():String{query}
++setColor(color:String)
++getSize():Double{query}
++setSize(size:Double)
++getBrand():String{query}
++setBrand(brand:String)
++getModel():String{query}
++setModel(model:String)
++getLicensePlate():String{query}
++setLicensePlate(licensePlate:String)
++equals(o:Object):Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>864</x><y>294</y><w>126</w><h>120</h></coordinates><panel_attributes>SpotExchange
+--
+-success:Boolean
+-min:Integer
+-validity:Boolean
+--
++SpotExchange()
++isSuccess():Boolean{query}
++setSucess(success:Boolean)
++getMin():Integer{query}
++setMin(min:Integer)
++isValidity():Boolean{query}
++setValidity(validity:Boolean)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>222</y><w>174</w><h>192</h></coordinates><panel_attributes>Parking Spot
+--
+_+ uid: Integer_
+-id: Integer
+-time: Time
+-availability: Boolean
+-address: Address
+-user: User
+--
++ ParkingSpot(time: Time, 
+address: Address, user: User)
++ getUser(): User {query}
++ getId(): Integer {query}
++ getTime(): Time {query}
++ getAddress(): Address {query}
++ isAvailability(): Boolean {query}
++ setUser(user: User)
++ setId(id: Integer)
++ setAddress (address: Address)
++ setAvailability(availability: Boolean)
++ equals(o: Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>408</y><w>228</w><h>84</h></coordinates><panel_attributes>ParkedUser
+--
+-parkingSpot: ParkingSpot
+--
++ParkedUser(name:String,surname:String,email:
+String,password:String,telephone:String,vehicle:Vehicle)
++getParkingSpot():ParkingSpot{query}
++setParkingSpot(parkingspot:ParkingSpot)
++declareParkingSpot(time:Time,address:Address)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>444</y><w>66</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;120;60;120;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>606</x><y>546</y><w>108</w><h>30</h></coordinates><panel_attributes>lt=-
+
+m2=0..1
+</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>606</x><y>408</y><w>132</w><h>54</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+</panel_attributes><additional_attributes>10;60;190;60;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>174</y><w>24</w><h>60</h></coordinates><panel_attributes>lt=-
+
+m2=1
+</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>408</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=-
+m2=1
+</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>270</y><w>72</w><h>30</h></coordinates><panel_attributes>lt=-
+m2=1
+</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>Relation</id><coordinates><x>918</x><y>408</y><w>24</w><h>72</h></coordinates><panel_attributes>lt=-
+m1=1
+</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>510</y><w>66</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;10;90;80</additional_attributes></element><element><id>Relation</id><coordinates><x>186</x><y>180</y><w>24</w><h>60</h></coordinates><panel_attributes>lt=-
+
+m2=*
+</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>828</x><y>174</y><w>24</w><h>60</h></coordinates><panel_attributes>lt=-
+
+m2=1
+</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>

@@ -1,0 +1,376 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > EditProfileActivity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.editProfile</a>
+</div>
+
+<h1>Coverage Summary for Class: EditProfileActivity (gr.aueb.parkhub.views.editProfile)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EditProfileActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    5,3%
+  </span>
+  <span class="absValue">
+    (1/19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,8%
+  </span>
+  <span class="absValue">
+    (2/42)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">EditProfileActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">EditProfileActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    4,3%
+  </span>
+  <span class="absValue">
+    (1/23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,3%
+  </span>
+  <span class="absValue">
+    (2/46)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.editProfile;
+&nbsp;
+&nbsp;import android.annotation.SuppressLint;
+&nbsp;import android.app.AlertDialog;
+&nbsp;import android.content.Intent;
+&nbsp;import android.os.Bundle;
+&nbsp;import android.view.View;
+&nbsp;import android.widget.EditText;
+&nbsp;import android.widget.Toast;
+&nbsp;import androidx.appcompat.app.AppCompatActivity;
+&nbsp;import gr.aueb.parkhub.R;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;import gr.aueb.parkhub.memorydao.AccountDAOMemory;
+&nbsp;import gr.aueb.parkhub.views.viewProfile.ViewProfileActivity;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Χριστουλακης Ιωσηφ
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+<b class="nc">&nbsp;public class EditProfileActivity extends AppCompatActivity implements EditProfileView {</b>
+&nbsp;    /**
+&nbsp;     * Δημιουργεί to layout και αρχικοποιεί
+&nbsp;     * το activity.
+&nbsp;     * @param savedInstanceState το Instance state
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc">&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc">&nbsp;        setContentView(R.layout.editprofile_activity);</b>
+&nbsp;
+<b class="nc">&nbsp;        final EditProfilePresenter presenter = new EditProfilePresenter(this,new AccountDAOMemory());</b>
+<b class="nc">&nbsp;        findViewById(R.id.editprofile_back_button).setOnClickListener(new View.OnClickListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void onClick(View v){
+<b class="nc">&nbsp;                presenter.onBack();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.editprofile_save_button).setOnClickListener(new View.OnClickListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void onClick(View v){
+<b class="nc">&nbsp;                presenter.onFinish();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τα στοιχεία που θα εμφανιστούν
+&nbsp;     * για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setContent(User user){
+&nbsp;
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_name_text)).setText(user.getName());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_surname_text)).setText(user.getSurname());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_email_text)).setText(user.getEmail());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_password_text)).setText(user.getPassword());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_phonenumber_text)).setText(user.getTelephone());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_brand_text)).setText(user.getVehicle().getBrand());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_model_text)).setText(user.getVehicle().getModel());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_color_text)).setText(user.getVehicle().getColor());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_licenseplate_text)).setText(user.getVehicle().getLicensePlate());</b>
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.editprofile_size_text)).setText(((Double.toString( user.getVehicle().getSize()))));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο ViewProfileActivity
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void homePage(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, ViewProfileActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο ViewProfileActivity
+&nbsp;     * και ενημερώνει τον χρήστη πως οι αλλαγές αποθηκεύτηκαν επιτυχώς
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void finish(Integer userID){
+<b class="nc">&nbsp;        Intent intent = new Intent(this, ViewProfileActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+<b class="nc">&nbsp;        Toast.makeText(this,&quot;Edits saved&quot;,Toast.LENGTH_LONG).show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το id του συνδεδεμένου χρήστη
+&nbsp;     * @return το id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Integer getAttachedUserID() {
+<b class="nc">&nbsp;        return this.getIntent().hasExtra(&quot;userid&quot;) ? this.getIntent().getExtras().getInt(&quot;userid&quot;) : 8;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα σε περίπτωση λάθος τιμής εισαγωγής
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void showErrorMessage(String message) {
+<b class="nc">&nbsp;        new AlertDialog.Builder(EditProfileActivity.this)</b>
+<b class="nc">&nbsp;                .setCancelable(true)</b>
+<b class="nc">&nbsp;                .setTitle(&quot;Input Error&quot;)</b>
+<b class="nc">&nbsp;                .setMessage(message)</b>
+<b class="nc">&nbsp;                .setPositiveButton(&quot;OK&quot;,null).create().show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το όνομα
+&nbsp;     * @return το όνομα
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getName() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_name_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το επώνυμο
+&nbsp;     * @return το επώνυμο
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getSurname() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_surname_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το email
+&nbsp;     * @return το email
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getEmail() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_email_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τον κωδικό
+&nbsp;     * @return τον κωδικό
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getPassword() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_password_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το τηλέφωνο
+&nbsp;     * @return το τηλέφωνο
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getTelephone() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_phonenumber_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τη μάρκα του αυτοκινήτου
+&nbsp;     * @return τη μάρκα του αυτοκινήτου
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getBrand() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_brand_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το μοντέλο του αυτοκινήτου
+&nbsp;     * @return το μοντέλο του αυτοκινήτου
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getModel() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_model_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το χρώμα του αυτοκινήτου
+&nbsp;     * @return το χρώμα του αυτοκινήτου
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getColor() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_color_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τη πινακίδα του αυτοκινήτου
+&nbsp;     * @return τη πινακίδα του αυτοκινήτου
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getLicensePlate() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_licenseplate_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το μέγεθος του αυτοκινήτου
+&nbsp;     * @return το μέγεθος του αυτοκινήτου
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getSize() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.editprofile_size_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Ελέγχει αν είναι δεκτής μορφής το email που δώθηκε
+&nbsp;     *  @param email το email που δώθηκε
+&nbsp;     * @return true αν είναι δεκτό αλλιώς false
+&nbsp;     */
+&nbsp;    public static boolean isValidEmail(String email) {
+<b class="fc">&nbsp;        String emailRegex = &quot;^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        return email.matches(emailRegex);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Απενεργοποίηση της λειτουργίας πίσω
+&nbsp;     * από το navigation menu του android
+&nbsp;     */
+&nbsp;    @SuppressLint(&quot;MissingSuperCall&quot;)
+&nbsp;    @Override
+&nbsp;    public void onBackPressed() {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

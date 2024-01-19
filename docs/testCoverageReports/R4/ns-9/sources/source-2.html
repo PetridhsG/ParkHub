@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SignUpPersonalPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.signUpPersonal</a>
+</div>
+
+<h1>Coverage Summary for Class: SignUpPersonalPresenter (gr.aueb.parkhub.views.signUpPersonal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SignUpPersonalPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.signUpPersonal;
+&nbsp;
+&nbsp;import static gr.aueb.parkhub.views.signUpPersonal.SignUpPersonalActivity.isValidEmail;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Δημήτρης Κεφαλάς
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;public class SignUpPersonalPresenter {
+&nbsp;
+&nbsp;
+&nbsp;    private SignUpPersonalView view;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αρχικοποιεί τον presenter
+&nbsp;     * @param view Ένα instance του view
+&nbsp;     */
+<b class="fc">&nbsp;    public SignUpPersonalPresenter(SignUpPersonalView view) {</b>
+<b class="fc">&nbsp;        this.view=view;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αν ο χρήστης εισάγει έγκυρα στοιχεία,η ροή μεταφέρεται στο
+&nbsp;     * SignUpVehicleActivity αλλιώς
+&nbsp;     * εμφανίζεται κατάλληλο μύνημα λάθους
+&nbsp;     */
+&nbsp;    public void onSignUpVehicle() {
+<b class="fc">&nbsp;        String name = view.getName();</b>
+<b class="fc">&nbsp;        String surname= view.getSurname();</b>
+<b class="fc">&nbsp;        String email = view.getEmail();</b>
+<b class="fc">&nbsp;        String password = view.getPassword();</b>
+<b class="fc">&nbsp;        String phonenumber = view.getTelephone();</b>
+&nbsp;
+<b class="fc">&nbsp;        if(!name.matches(&quot;^[^\\d]*$&quot;) || name.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use letters in the name text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!surname.matches(&quot;^[^\\d]*$&quot;) || surname.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use letters in the surname text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!(isValidEmail(email)) || email.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please enter a valid email address.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(password.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please fill the password text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!phonenumber.matches(&quot;^[^a-zA-Z]*$&quot;) || phonenumber.length() != 10 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use numbers in the phone number text and make sure they are 10.&quot;);</b>
+&nbsp;        } else{
+<b class="fc">&nbsp;            view.signUpVehicle();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SignInActivity
+&nbsp;     */
+<b class="fc">&nbsp;    public void onSignIn() {view.signIn();}</b>
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

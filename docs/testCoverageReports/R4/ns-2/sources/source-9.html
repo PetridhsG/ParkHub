@@ -1,0 +1,400 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > User</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: User (gr.aueb.parkhub.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">User</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (30/30)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (68/68)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.domain;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public class User{
+<b class="fc">&nbsp;    protected static int uid=0;</b>
+&nbsp;    protected int id;
+&nbsp;    protected String name;
+&nbsp;    protected String surname;
+&nbsp;    protected String email;
+&nbsp;    protected String password;
+&nbsp;    protected String telephone;
+&nbsp;    protected int PBucks;
+&nbsp;    protected double averageDelayTime;
+&nbsp;    protected double rating;
+&nbsp;    protected ArrayList&lt;Rating&gt; ratings;
+&nbsp;    protected Vehicle vehicle;
+&nbsp;    protected int delay;
+&nbsp;
+<b class="fc">&nbsp;    public User(String name, String surname, String email, String password, String telephone, Vehicle vehicle) {</b>
+<b class="fc">&nbsp;        this.id=uid;</b>
+<b class="fc">&nbsp;        uid++;</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.surname = surname;</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+<b class="fc">&nbsp;        this.password = password;</b>
+<b class="fc">&nbsp;        this.telephone = telephone;</b>
+<b class="fc">&nbsp;        this.PBucks= 100;</b>
+<b class="fc">&nbsp;        this.vehicle=vehicle;</b>
+<b class="fc">&nbsp;        this.averageDelayTime = 0 ;</b>
+<b class="fc">&nbsp;        this.rating = 0 ;</b>
+<b class="fc">&nbsp;        this.ratings = new ArrayList&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Copy constructor
+&nbsp;     * @param other ένας χρήστης
+&nbsp;     */
+<b class="fc">&nbsp;    public User(User other) {</b>
+<b class="fc">&nbsp;        this.id=uid;</b>
+<b class="fc">&nbsp;        uid++;</b>
+<b class="fc">&nbsp;        this.name = other.name;</b>
+<b class="fc">&nbsp;        this.surname = other.surname;</b>
+<b class="fc">&nbsp;        this.email = other.email;</b>
+<b class="fc">&nbsp;        this.password = other.password;</b>
+<b class="fc">&nbsp;        this.telephone = other.telephone;</b>
+<b class="fc">&nbsp;        this.PBucks = other.PBucks;</b>
+<b class="fc">&nbsp;        this.averageDelayTime = other.averageDelayTime;</b>
+<b class="fc">&nbsp;        this.rating = other.rating;</b>
+<b class="fc">&nbsp;        this.ratings = new ArrayList&lt;&gt;(other.ratings);</b>
+<b class="fc">&nbsp;        this.vehicle = new Vehicle(other.vehicle);</b>
+<b class="fc">&nbsp;        this.delay = other.delay;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την καθυστέρηση του χρήστη
+&nbsp;     * @return η καθυστέρηση
+&nbsp;     */
+&nbsp;    public int getDelay() {
+<b class="fc">&nbsp;        return delay;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την καθυστέρηση του χρήστη
+&nbsp;     * @param delay η καθυστέρηση
+&nbsp;     */
+&nbsp;    public void setDelay(int delay) {
+<b class="fc">&nbsp;        this.delay = delay;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το UID της κλάσης
+&nbsp;     * @return το UID
+&nbsp;     */
+&nbsp;    public int getUid(){
+<b class="fc">&nbsp;        return uid;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το ID του χρήστη
+&nbsp;     * @return το ID
+&nbsp;     */
+&nbsp;    public int getId() {
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το όνομα του χρήστη
+&nbsp;     * @return το όνομα
+&nbsp;     */
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το όνομα του χρήστη
+&nbsp;     * @param name το όνομα
+&nbsp;     */
+&nbsp;    public void setName(String name) {
+<b class="fc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το επίθετο του χρήστη
+&nbsp;     * @return το επίθετο
+&nbsp;     */
+&nbsp;    public String getSurname() {
+<b class="fc">&nbsp;        return surname;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το επίθετο του χρήστη
+&nbsp;     * @param surname το επίθετο
+&nbsp;     */
+&nbsp;    public void setSurname(String surname) {
+<b class="fc">&nbsp;        this.surname = surname;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το email του χρήστη
+&nbsp;     * @return το email
+&nbsp;     */
+&nbsp;    public String getEmail() {
+<b class="fc">&nbsp;        return email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το email του χρήστη
+&nbsp;     * @param email το email
+&nbsp;     */
+&nbsp;    public void setEmail(String email) {
+<b class="fc">&nbsp;        this.email = email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τον κωδικό του χρήστη
+&nbsp;     * @return ο κωδικός
+&nbsp;     */
+&nbsp;    public String getPassword() {
+<b class="fc">&nbsp;        return password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τον κωδικό του χρήστη
+&nbsp;     * @param password ο κωδικός
+&nbsp;     */
+&nbsp;    public void setPassword(String password) {
+<b class="fc">&nbsp;        this.password = password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το τηλέφωνο του χρήστη
+&nbsp;     * @return το τηλέφωνο
+&nbsp;     */
+&nbsp;    public String getTelephone() {
+<b class="fc">&nbsp;        return telephone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το τηλέφωνο του χρήστη
+&nbsp;     * @param telephone το τηλέφωνο
+&nbsp;     */
+&nbsp;    public void setTelephone(String telephone) {
+<b class="fc">&nbsp;        this.telephone = telephone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τα PBucks του χρήστη
+&nbsp;     * @return τα PBucks
+&nbsp;     */
+&nbsp;    public int getPBucks() {
+<b class="fc">&nbsp;        return PBucks;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τα PBucks του χρήστη
+&nbsp;     * @param PBucks τα PBucks
+&nbsp;     */
+&nbsp;    public void setPBucks(int PBucks) {
+<b class="fc">&nbsp;        this.PBucks = PBucks;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προσθέτει αξιολόγηση στον χρήστη
+&nbsp;     * @param rating η αξιολόγηση
+&nbsp;     */
+&nbsp;    public void addRating(Rating rating){
+<b class="fc">&nbsp;        this.ratings.add(rating);</b>
+<b class="fc">&nbsp;        int s = 0;</b>
+<b class="fc">&nbsp;        for(Rating rat: ratings){</b>
+<b class="fc">&nbsp;            s += rat.getRating();</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        this.rating = s/ratings.size();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τις αξιολογήσεις του χρήστη
+&nbsp;     * @return οι αξιολογήσεις
+&nbsp;     */
+&nbsp;    public ArrayList&lt;Rating&gt; getRatings() {
+<b class="fc">&nbsp;        return this.ratings;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τις αξιολογήσεις του χρήστη
+&nbsp;     * @param ratings οι αξιολογήσεις
+&nbsp;     */
+&nbsp;    public void setRatings(ArrayList&lt;Rating&gt; ratings) {
+<b class="fc">&nbsp;        this.ratings = ratings;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τo όχημα του χρήστη
+&nbsp;     * @return το όχημα
+&nbsp;     */
+&nbsp;    public Vehicle getVehicle() {
+<b class="fc">&nbsp;        return this.vehicle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τo όχημα του χρήστη
+&nbsp;     * @param vehicle το όχημα
+&nbsp;     */
+&nbsp;    public void setVehicle(Vehicle vehicle) {
+<b class="fc">&nbsp;        this.vehicle = vehicle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τo μέσο χρόνο καθυστέρησης του χρήστη
+&nbsp;     * @return ο μέσος χρόνος καθυστέρησης
+&nbsp;     */
+&nbsp;    public double getAverageDelayTime() {
+<b class="fc">&nbsp;        return this.averageDelayTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τo μέσο χρόνο καθυστέρησης του χρήστη
+&nbsp;     * @param averageDelayTime ο μέσος χρόνος καθυστέρησης
+&nbsp;     */
+&nbsp;    public void setAverageDelayTime(double averageDelayTime) {
+<b class="fc">&nbsp;        this.averageDelayTime = averageDelayTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την αξιολόγηση του χρήστη
+&nbsp;     * @return η αξιολόγηση
+&nbsp;     */
+&nbsp;    public double getRating() {
+<b class="fc">&nbsp;        return this.rating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την αξιολόγηση του χρήστη
+&nbsp;     * @param rating η αξιολόγηση
+&nbsp;     */
+&nbsp;    public void setRating(double rating) {
+<b class="fc">&nbsp;        this.rating = rating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προσθέτει PBucks στον χρήστη
+&nbsp;     * @param choice το πακέτο που επέλεξε
+&nbsp;     */
+&nbsp;    public void PBucksRenewal(int choice){
+<b class="fc">&nbsp;        switch(choice){</b>
+&nbsp;            case 1:
+<b class="fc">&nbsp;                this.PBucks += 10;</b>
+<b class="fc">&nbsp;                break;</b>
+&nbsp;            case 2:
+<b class="fc">&nbsp;                this.PBucks += 30;</b>
+<b class="fc">&nbsp;                break;</b>
+&nbsp;            case 3:
+<b class="fc">&nbsp;                this.PBucks += 100;</b>
+&nbsp;                break;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Ελέγχει την ισότητα δύο αντικειμένων τύπου user
+&nbsp;     * @param o ένα αντικείμενο τύπου user
+&nbsp;     * @return αν είναι ίσα τα αντικείμενα
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="fc">&nbsp;        if (this == o) return true;</b>
+<b class="fc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        User user = (User) o ;</b>
+<b class="fc">&nbsp;        return Objects.equals(email, user.email);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

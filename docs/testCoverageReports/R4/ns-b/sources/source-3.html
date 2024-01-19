@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpotDeclarationView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.spotDeclaration</a>
+</div>
+
+<h1>Coverage Summary for Class: SpotDeclarationView (gr.aueb.parkhub.views.spotDeclaration)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">SpotDeclarationView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.spotDeclaration;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.Time;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;public interface SpotDeclarationView {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την οδό της διέθυνσης
+&nbsp;     * @return την οδό της διέθυνσης
+&nbsp;     */
+&nbsp;    String getStreet();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τον αριθμό οδού της διέθυνσης
+&nbsp;     * @return τον αριθμό οδού της διέθυνσης
+&nbsp;     */
+&nbsp;    String getStNumber();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την πόλη της διέθυνσης
+&nbsp;     * @return την πόλη της διέθυνσης
+&nbsp;     */
+&nbsp;    String getCity();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την περιοχή διέθυνσης
+&nbsp;     * @return την περιοχή της διέθυνσης
+&nbsp;     */
+&nbsp;    String getRegion();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την ώρα που θα είναι διαθέσιμη η θέση
+&nbsp;     * @return η ώρα που θα είναι διαθέσιμη η θέση
+&nbsp;     */
+&nbsp;    Time getTime();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    Integer getAttachedUserID() ;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική σελίδα
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void back(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Δημιουργεί μία καινούργια θέση και επιστρέφει στην αρχική οθόνη
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void declare(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την οδό της διέθυνσης
+&nbsp;     * @param street Το όνομα της οδού
+&nbsp;     */
+&nbsp;
+&nbsp;    void setStreet(String street);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τον αριθμό οδόύ της διέθυνσης
+&nbsp;     * @param stNumber Ο αριθμός της οδού
+&nbsp;     */
+&nbsp;    void setStNumber(int stNumber);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την πόλη της διέθυνσης
+&nbsp;     * @param city Το όνομα της πόλης
+&nbsp;     */
+&nbsp;    void setCity(String city);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την περιοχή της διέθυνσης
+&nbsp;     * @param region Το όνομα της πόλης
+&nbsp;     */
+&nbsp;    void setRegion(String region);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την ώρα που θα είναι διαθέσιμη η θέση
+&nbsp;     * @param time Η ώρα που θα είναι διαθέσιμη η θέση
+&nbsp;     */
+&nbsp;    void setTime(Time time);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το περιεχόμενο για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    void setContent(User user);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο μύνημα που εμφανίζεται σε περίπτωση error
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showErrorMessage(String message);
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

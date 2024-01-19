@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > HomepageView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.homepage</a>
+</div>
+
+<h1>Coverage Summary for Class: HomepageView (gr.aueb.parkhub.views.homepage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">HomepageView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.homepage;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public interface HomepageView {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    Integer getAttachedUserID() ;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο ViewProfileActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void viewProfile(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο PBucksRenewalActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void addPBucks(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SpotDeclaationActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void declareSpot(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SpotReservationActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void reserveSpot(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Πραγματοποιείται η διαδικασία ανταλλαγής θέσης
+&nbsp;     */
+&nbsp;    void exchangeSpot(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο RatingActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void reportFalseSpot(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προβάλει τα στατιστικά στην οθόνη
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void viewStatistics(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο μύνημα που εμφανίζεται σε περίπτωση error
+&nbsp;     * @param title ο τίτλος του μυνήματος
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showErrorMessage(String title, String message);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το περιεχόμενο για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    void setContent(User user);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο Toast μύνημα που εμφανίζεται
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showToastMessage(String message);
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

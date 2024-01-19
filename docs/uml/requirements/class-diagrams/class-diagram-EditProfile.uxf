@@ -1,0 +1,103 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>184</x><y>0</y><w>280</w><h>536</h></coordinates><panel_attributes>User
+--
+_# uid:Integer = 0_
+# id:Integer 
+# name:String
+# surname:String
+# email:String
+# password:String
+# telephone:String
+# PBucks:Integer
+# averageDelayTime:Double
+# rating:Double
+# ratings:ArrayList&lt;Rating&gt;
+# vehicle:Vehicle
+# delay:Integer
+--
++ User(name:String,surname:String,password:String
+,telephone:String,vehicle:Vehicle)
++ getRatings(): ArrayList&lt;Rating&gt; {query}
++ getVehicle() : Vehicle {query}
++ getAverageDelayTime(): Double {query}
++ getRating() : Rating {query}
++ setRatings(ratings:ArrayList&lt;Rating&gt;)
++ getDelay(): Integer {query}
++ getUid(): Integer {query}
++ getId(): Integer {query}
++ getName(): String {query}
++ getSurname(): String {query}
++ getEmail(): String {query}
++ getPassword(): String {query}
++ getTelephone(): String {query}
++ getPBucks(): Integer {query}
++ setDelay(delay: Integer)
++ setName(name: String)
++ setSurname(surname: String)
++ setEmail(email: String)
++ setPassword(password: String)
++ setTelephone(telephone: String)
++ setPBucks(PBucks: Integer)
++ setVehicle(vehicle:Vehicle)
++ setAverageDelayTime(averageDelayTime:Double)
++ setRating(rating:Double)
++ PBucksRenewal(choice:Integer)
++ equals(o:Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>232</x><y>632</y><w>216</w><h>128</h></coordinates><panel_attributes>AccountDAOMemory
+--
+#users: ArrayList&lt;User&gt;
+-authorizedIDS: ArrayList&lt;Integer&gt;
+--
++delete(user: User): void
++save(user: User): void
++findAll(): List&lt;User&gt;
++find(userId: Integer): User
++findUserByEmail(email: String): User
++authorized(id: Integer): Boolean
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>528</y><w>32</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>648</y><w>72</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>648</y><w>88</w><h>32</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>496</x><y>648</y><w>16</w><h>56</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>704</y><w>152</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>632</y><w>264</w><h>120</h></coordinates><panel_attributes>EditProfilePresenter
+--
+-view: EditProfileView
+-attachedUser: User
+-accounts: AccountDAO
+--
++EditProfilePresenter(view: EditProfileView
+accountDAO : accountDAO)
++onBack(): void
++onFinish(): void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>496</y><w>160</w><h>152</h></coordinates><panel_attributes>lt=-
+m1=1</panel_attributes><additional_attributes>10;10;180;10;180;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>248</y><w>232</w><h>224</h></coordinates><panel_attributes>EditProfileActivity
+--
+-presenter: EditProfilePresenter
+--
++homePage(userID: Integer): void
++finish(userID: Integer): void
++getAttachedUserID():Integer
++showErrorMessage(message: String): void
++getName():String
++getSurname():String
++getEmail(): String
++getPassword(): String
++getTelephone():String
++getBrand():String
++getModel():String
++getColor():String
++getLicensePlate():String
++getSize():String
+_+isValidEmail(email:String):Boolean_
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>744</x><y>464</y><w>24</w><h>184</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;210;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>544</y><w>24</w><h>104</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>464</y><w>72</w><h>88</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>680</x><y>528</y><w>16</w><h>56</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element></diagram>

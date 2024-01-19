@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PBucksRenewalView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.pBucksRenewal</a>
+</div>
+
+<h1>Coverage Summary for Class: PBucksRenewalView (gr.aueb.parkhub.views.pBucksRenewal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">PBucksRenewalView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.pBucksRenewal;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;public interface PBucksRenewalView {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο HomepageActivity
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void homePage(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο HomePageActivity
+&nbsp;     * και ενημερώνει τον χρήστη πως προστέθηκαν
+&nbsp;     * 10 P-Bucks στον λογαριασμό του επιτυχώς
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void pack10(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο HomePageActivity
+&nbsp;     * και ενημερώνει τον χρήστη πως προστέθηκαν
+&nbsp;     * 20 P-Bucks στον λογαριασμό του επιτυχώς
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void pack20(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο HomePageActivity
+&nbsp;     * και ενημερώνει τον χρήστη πως προστέθηκαν
+&nbsp;     * 50 P-Bucks στον λογαριασμό του επιτυχώς
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void pack50(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο HomePageActivity
+&nbsp;     * και ενημερώνει τον χρήστη πως προστέθηκαν
+&nbsp;     * 100 P-Bucks στον λογαριασμό του επιτυχώς
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void pack100(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    Integer getAttachedUserID();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τον αριθμό των P-Bucks που θα εμφανιστούν
+&nbsp;     * για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    void setContent(User user);
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

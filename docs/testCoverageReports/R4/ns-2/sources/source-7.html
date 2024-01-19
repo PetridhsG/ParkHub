@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpotReservation</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: SpotReservation (gr.aueb.parkhub.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SpotReservation</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.domain;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public class SpotReservation {
+&nbsp;    private int id;
+<b class="fc">&nbsp;    public static int uid = 0;</b>
+&nbsp;    private Time arrivalTime;
+&nbsp;    private ParkingSpot parkingSpot;
+&nbsp;    private SpotExchange spotExchange;
+&nbsp;
+<b class="fc">&nbsp;    public SpotReservation(Time arrivalTime, ParkingSpot parkingSpot, SpotExchange spotExchange) {</b>
+<b class="fc">&nbsp;        this.id = uid;</b>
+<b class="fc">&nbsp;        uid++;</b>
+<b class="fc">&nbsp;        this.arrivalTime = arrivalTime;</b>
+<b class="fc">&nbsp;        this.parkingSpot = parkingSpot;</b>
+<b class="fc">&nbsp;        this.spotExchange= spotExchange;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το ID της κράτησης
+&nbsp;     * @return το ID
+&nbsp;     */
+&nbsp;    public int getId() {
+<b class="fc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το χρόνο άφιξης
+&nbsp;     * @return ο χρόνος άφιξης
+&nbsp;     */
+&nbsp;    public Time getArrivalTime() {
+<b class="fc">&nbsp;        return arrivalTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το χρόνο άφιξης
+&nbsp;     * @param arrivalTime ο χρόνος άφιξης
+&nbsp;     */
+&nbsp;    public void setArrivalTime(Time arrivalTime) {
+<b class="fc">&nbsp;        this.arrivalTime = arrivalTime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την κρατημένη θέση
+&nbsp;     * @return η θέση
+&nbsp;     */
+&nbsp;    public ParkingSpot getParkingSpot() {
+<b class="fc">&nbsp;        return parkingSpot;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την κρατημένη θέση
+&nbsp;     * @param parkingSpot  η θέση
+&nbsp;     */
+&nbsp;    public void setParkingSpot(ParkingSpot parkingSpot) {
+<b class="fc">&nbsp;        this.parkingSpot = parkingSpot;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την ανταλλαγή της θέσης
+&nbsp;     * @return η ανταλλαγή της θέσης
+&nbsp;     */
+&nbsp;    public SpotExchange getSpotexchange() {
+<b class="fc">&nbsp;        return spotExchange;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την ανταλλαγή της θέσης
+&nbsp;     * @param spotExchange η ανταλλαγή
+&nbsp;     */
+&nbsp;    public void setSpotExchange(SpotExchange spotExchange) {
+<b class="fc">&nbsp;        this.spotExchange = spotExchange;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

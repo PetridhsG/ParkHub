@@ -1,0 +1,107 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ReservationsDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: ReservationsDAO (gr.aueb.parkhub.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ReservationsDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.dao;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.SpotReservation;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;public interface ReservationsDAO {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Διαγράφει μια κράτηση
+&nbsp;     * @param spotReservation η κράτηση
+&nbsp;     */
+&nbsp;    void delete(SpotReservation spotReservation);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αποθηκέυει μια κράτηση
+&nbsp;     * @param spotReservation  η κράτηση
+&nbsp;     */
+&nbsp;    void save(SpotReservation spotReservation);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει όλες τις κρατήσεις
+&nbsp;     * @return λίστα με τις κρατήσεις
+&nbsp;     */
+&nbsp;    List&lt;SpotReservation&gt; findAll();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Βρίσκει μια κράτηση με βάση του Id της
+&nbsp;     * @param spotReservationId το Id της κράτησης
+&nbsp;     * @return την κράτηση με το συγκεκριμένο Id
+&nbsp;     */
+&nbsp;    SpotReservation find(int spotReservationId);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>120</x><y>430</y><w>330</w><h>100</h></coordinates><panel_attributes>SignUpPersonalPresenter
+--
+-view: SignUpPersonalView
+--
++SignUpPersonalPresenter(view: SignUpPersonalView)
++onSignUpVehicle(): void
++onSignIn(): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>50</y><w>290</w><h>190</h></coordinates><panel_attributes>SignUpPersonalActivity
+--
+-presenter: SignUpPersonalPresenter
+--
++signUpVehicle(): void
++signIn(): void
++isValidEmail(email: String): Boolean
++showErrorMessage(message: String): void
++getName(): String
++getSurname(): String
++getEmail(): String
++getPassword(): String
++getTelephone(): String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>230</y><w>30</w><h>220</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>330</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>230</y><w>90</w><h>110</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>200</x><y>310</y><w>20</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element></diagram>

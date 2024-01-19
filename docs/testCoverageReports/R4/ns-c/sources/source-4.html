@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpotReservationView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.spotReservation</a>
+</div>
+
+<h1>Coverage Summary for Class: SpotReservationView (gr.aueb.parkhub.views.spotReservation)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">SpotReservationView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.spotReservation;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.Time;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public interface SpotReservationView {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική σελίδα
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void back(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εφαρμόζει φίλτρο στην αναζήτηση
+&nbsp;     * @param constraint ο περιορισμός για το φίλτρο
+&nbsp;     */
+&nbsp;    void apply(String constraint);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιβεβαιώνει την κράτηση μίας θέσης
+&nbsp;     * @param userID το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    void confirm(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το περιεχόμενο για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    void setContent(User user);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την ώρα άφιξης του χρήστη
+&nbsp;     * @return η ώρα άφιξης του χρήστη
+&nbsp;     */
+&nbsp;    Time getTime();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την ώρα άφιξης του χρήστη
+&nbsp;     * @param time η ώρα άφιξης του χρήστη
+&nbsp;     */
+&nbsp;    void setTime(Time time);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την περιοχή αναζήτησης
+&nbsp;     * @return η περιοχή αναζήτησης
+&nbsp;     */
+&nbsp;    String getRegion();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την περιοχή αναζήτησης
+&nbsp;     * @param region η περιοχή αναζήτησης
+&nbsp;     */
+&nbsp;    void setRegion(String region);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το ID για την συγκεκριμένη θέση
+&nbsp;     * @param parkingSpotID το ID της θέσης
+&nbsp;     */
+&nbsp;    void setParkingSpotID(Integer parkingSpotID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το ID της συγκεκριμένης θέσης
+&nbsp;     * @return το ID της θέσης
+&nbsp;     */
+&nbsp;    Integer getParkingSpotID();
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    Integer getAttachedUserID() ;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα στο χρήστη
+&nbsp;     * @param title ο τίτλος του μυνήματος
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showMessage(String title,String message);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα στο χρήστη
+&nbsp;     * @param toastMessage το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showToast(String toastMessage);
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpotsDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: SpotsDAO (gr.aueb.parkhub.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">SpotsDAO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.dao;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.ParkingSpot;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;public interface SpotsDAO {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Διαγράφει μια θέση
+&nbsp;     * @param parkingSpot η θέση
+&nbsp;     */
+&nbsp;    void delete(ParkingSpot parkingSpot);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αποθηκεύει μια θέση
+&nbsp;     * @param parkingSpot η θέση
+&nbsp;     */
+&nbsp;    void save(ParkingSpot parkingSpot);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει όλες τις θέσεις
+&nbsp;     * @return λίστα με τις θέσεις
+&nbsp;     */
+&nbsp;    List&lt;ParkingSpot &gt; findAll();
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Βρίσκει μία θέση με βάση του ID της
+&nbsp;     * @param parkingSpotId το Id της θέσης
+&nbsp;     * @return την θέση με συγκεκριμένο Id
+&nbsp;     */
+&nbsp;    ParkingSpot find(int parkingSpotId);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

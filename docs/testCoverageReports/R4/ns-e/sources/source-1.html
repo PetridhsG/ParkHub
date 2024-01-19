@@ -1,0 +1,297 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ViewProfileActivity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.viewProfile</a>
+</div>
+
+<h1>Coverage Summary for Class: ViewProfileActivity (gr.aueb.parkhub.views.viewProfile)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ViewProfileActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/41)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ViewProfileActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ViewProfileActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/45)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.viewProfile;
+&nbsp;
+&nbsp;import android.annotation.SuppressLint;
+&nbsp;import android.app.AlertDialog;
+&nbsp;import android.content.Intent;
+&nbsp;import android.os.Bundle;
+&nbsp;import android.view.View;
+&nbsp;import android.widget.TextView;
+&nbsp;import androidx.appcompat.app.AppCompatActivity;
+&nbsp;import java.util.Objects;
+&nbsp;import gr.aueb.parkhub.R;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;import gr.aueb.parkhub.memorydao.AccountDAOMemory;
+&nbsp;import gr.aueb.parkhub.views.util.ProfileFragment;
+&nbsp;import gr.aueb.parkhub.views.editProfile.EditProfileActivity;
+&nbsp;import gr.aueb.parkhub.views.homepage.HomepageActivity;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Χριστουλάκης Ιωσήφ
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+<b class="nc">&nbsp;public class ViewProfileActivity extends AppCompatActivity implements ViewProfileView{</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Δημιουργεί to layout και αρχικοποιεί
+&nbsp;     * το activity.
+&nbsp;     * @param savedInstanceState το Instance state
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+&nbsp;
+<b class="nc">&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc">&nbsp;        setContentView(R.layout.viewprofile_activity);</b>
+&nbsp;
+<b class="nc">&nbsp;        final ViewProfilePresenter presenter = new ViewProfilePresenter(this,new AccountDAOMemory());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.viewprofile_back_button).setOnClickListener(new View.OnClickListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void onClick(View v){
+<b class="nc">&nbsp;                presenter.onHomePage();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.viewprofile_edit_button).setOnClickListener(new View.OnClickListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void onClick(View v){
+<b class="nc">&nbsp;                presenter.onEditProfile();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τα στοιχεία που θα εμφανιστούν
+&nbsp;     * για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setContent(User user){
+&nbsp;
+<b class="nc">&nbsp;        Bundle bundle = getIntent().getExtras();</b>
+<b class="nc">&nbsp;        if (bundle != null) {</b>
+<b class="nc">&nbsp;            int userId = bundle.getInt(&quot;userid&quot;);</b>
+<b class="nc">&nbsp;            ProfileFragment fragment = new ProfileFragment();</b>
+<b class="nc">&nbsp;            Bundle args = new Bundle();</b>
+<b class="nc">&nbsp;            args.putInt(&quot;userid&quot;,userId);</b>
+<b class="nc">&nbsp;            fragment.setArguments(args);</b>
+<b class="nc">&nbsp;            getSupportFragmentManager().beginTransaction().replace(R.id.viewprofile_profilefragment, fragment).commit();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_name_text)).setText(user.getName());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_surname_text)).setText(user.getSurname());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_email_text)).setText(user.getEmail());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_password_text)).setText(user.getPassword());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_phonenumber_text)).setText(user.getTelephone());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_brand_text)).setText(user.getVehicle().getBrand());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_model_text)).setText(user.getVehicle().getModel());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_color_text)).setText(user.getVehicle().getColor());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_licenseplate_text)).setText(user.getVehicle().getLicensePlate());</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_size_text)).setText(((Double.toString( user.getVehicle().getSize()))));</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_rating_stars_text)).setText(((Double.toString( user.getRating()))));</b>
+<b class="nc">&nbsp;        ((TextView)findViewById(R.id.viewprofile_avgdelaytime_text)).setText(((Double.toString( user.getDelay()))));</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική σελίδα
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void homePage(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, HomepageActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο EditProfileActivity
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void editProfile(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, EditProfileActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το id του συνδεδεμένου χρήστη
+&nbsp;     * @return το id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Integer getAttachedUserID() {
+<b class="nc">&nbsp;        if (this.getIntent().hasExtra(&quot;userid&quot;)) {</b>
+<b class="nc">&nbsp;            return Objects.requireNonNull(this.getIntent().getExtras()).getInt(&quot;userid&quot;);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return 8;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα error σε περίπτωση
+&nbsp;     * που ο χρήστης προσπαθήσει να αλλαξει τα στοιχεια
+&nbsp;     * του ενώ εχει κάποια κράτηση
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    public void showErrorMessage(String message) {
+<b class="nc">&nbsp;        new AlertDialog.Builder(ViewProfileActivity.this)</b>
+<b class="nc">&nbsp;                .setCancelable(true)</b>
+<b class="nc">&nbsp;                .setTitle(&quot;Access Error&quot;)</b>
+<b class="nc">&nbsp;                .setMessage(message)</b>
+<b class="nc">&nbsp;                .setPositiveButton(&quot;OK&quot;,null).create().show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Απενεργοποίηση της λειτουργίας πίσω
+&nbsp;     * από το navigation menu του android
+&nbsp;     */
+&nbsp;    @SuppressLint(&quot;MissingSuperCall&quot;)
+&nbsp;    @Override
+&nbsp;    public void onBackPressed() {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

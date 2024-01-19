@@ -1,0 +1,14 @@
+gr.aueb.parkhub.dao
+gr.aueb.parkhub.domain
+gr.aueb.parkhub.memorydao
+gr.aueb.parkhub.views.editProfile
+gr.aueb.parkhub.views.homepage
+gr.aueb.parkhub.views.pBucksRenewal
+gr.aueb.parkhub.views.rating
+gr.aueb.parkhub.views.signIn
+gr.aueb.parkhub.views.signUpPersonal
+gr.aueb.parkhub.views.signUpVehicle
+gr.aueb.parkhub.views.spotDeclaration
+gr.aueb.parkhub.views.spotReservation
+gr.aueb.parkhub.views.util
+gr.aueb.parkhub.views.viewProfile

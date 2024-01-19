@@ -1,0 +1,107 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SignInView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.signIn</a>
+</div>
+
+<h1>Coverage Summary for Class: SignInView (gr.aueb.parkhub.views.signIn)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">SignInView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.signIn;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Δημήτρης Κεφαλάς
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;public interface SignInView {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο HomepageActivity
+&nbsp;     * @param userID το Id του χρήστη που πρόκειται να συνδεθεί
+&nbsp;     */
+&nbsp;    void homePage(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SignUpPersonalActivity
+&nbsp;     */
+&nbsp;    void signUpPersonal();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο μύνημα που εμφανίζεται σε περίπτωση error
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showErrorMessage(String message);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Email που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Email που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    String getEmail();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Password που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Password που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    String getPassword();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

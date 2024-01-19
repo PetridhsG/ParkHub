@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SearchingUser</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.domain</a>
+</div>
+
+<h1>Coverage Summary for Class: SearchingUser (gr.aueb.parkhub.domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SearchingUser</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96%
+  </span>
+  <span class="absValue">
+    (24/25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.domain;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Κεφαλάς Δημήτρης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public class SearchingUser extends User {
+&nbsp;
+&nbsp;    private SpotReservation spotReservation;
+&nbsp;
+&nbsp;    public SearchingUser(String name, String surname, String email, String password, String telephone, Vehicle vehicle) {
+<b class="fc">&nbsp;        super(name, surname, email, password, telephone, vehicle);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Copy constructor
+&nbsp;     * @param user ένας χρήστης
+&nbsp;     */
+&nbsp;    public SearchingUser(User user){
+<b class="nc">&nbsp;        super(user);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την κράτηση που έχει κάνει ο χρήστης
+&nbsp;     * @return η κράτηση
+&nbsp;     */
+&nbsp;    public SpotReservation getSpotReservation() {
+<b class="fc">&nbsp;        return spotReservation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την κράτηση που έχει κάνει ο χρήστης
+&nbsp;     * @param spotReservation η κράτηση
+&nbsp;     */
+&nbsp;    public void setSpotReservation(SpotReservation spotReservation) {
+<b class="fc">&nbsp;        this.spotReservation = spotReservation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Πραγματοποιεί την διαδικάσια κράτησης θέσης
+&nbsp;     * @param agreement αν αποδέχτηκε ο σταθμευμένος χρήστης
+&nbsp;     * @param arrivalTime η ώρα άφιξης του χρήστη που αναζητά
+&nbsp;     * @param parkingSpot η θέση προς κράτηση
+&nbsp;     * @return την επιτυχία την κράτησης
+&nbsp;     */
+&nbsp;    public boolean reserveParkingSpot(boolean agreement, Time arrivalTime, ParkingSpot parkingSpot) {
+<b class="fc">&nbsp;        if (agreement){                                      // if the parked user agrees</b>
+<b class="fc">&nbsp;            SpotExchange spotexchange = new SpotExchange();</b>
+<b class="fc">&nbsp;            parkingSpot.setAvailability(false);</b>
+<b class="fc">&nbsp;            this.spotReservation = new SpotReservation(arrivalTime, parkingSpot,spotexchange);</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Καταχωρεί την ψευδή δήλωση θέσης
+&nbsp;     */
+&nbsp;    public void declareFalseSpot(){
+<b class="fc">&nbsp;        this.spotReservation.getSpotexchange().setValidity(false);</b>
+<b class="fc">&nbsp;        this.spotReservation.getSpotexchange().setSuccess(false);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Πραγματοποιεί την διαδικασία της ανταλλαγής
+&nbsp;     * @return την επιτυχία της ανταλλαγής
+&nbsp;     */
+&nbsp;    public boolean exchange(){
+<b class="fc">&nbsp;        this.spotReservation.getSpotexchange().setValidity(true);</b>
+<b class="fc">&nbsp;        if(this.spotReservation.getParkingSpot().getUser().getDelay()&gt;10){</b>
+<b class="fc">&nbsp;            this.spotReservation.getSpotexchange().setSuccess(false);</b>
+<b class="fc">&nbsp;            return false;</b>
+<b class="fc">&nbsp;        }else if(this.getDelay()&gt;10){</b>
+<b class="fc">&nbsp;            this.spotReservation.getSpotexchange().setSuccess(false);</b>
+<b class="fc">&nbsp;            this.setPBucks(this.getPBucks()-10);</b>
+<b class="fc">&nbsp;            this.spotReservation.getParkingSpot().getUser().setPBucks(spotReservation.getParkingSpot().getUser().getPBucks() +10);</b>
+<b class="fc">&nbsp;            return false;</b>
+&nbsp;        }else{
+<b class="fc">&nbsp;            this.setPBucks(this.getPBucks()-10);</b>
+<b class="fc">&nbsp;            this.spotReservation.getParkingSpot().getUser().setPBucks(spotReservation.getParkingSpot().getUser().getPBucks() +10);</b>
+<b class="fc">&nbsp;            this.spotReservation.getSpotexchange().setSuccess(true);</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

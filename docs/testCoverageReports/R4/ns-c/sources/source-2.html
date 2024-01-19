@@ -1,0 +1,316 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpotReservationActivity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.spotReservation</a>
+</div>
+
+<h1>Coverage Summary for Class: SpotReservationActivity (gr.aueb.parkhub.views.spotReservation)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SpotReservationActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/44)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.spotReservation;
+&nbsp;
+&nbsp;import android.annotation.SuppressLint;
+&nbsp;import android.app.AlertDialog;
+&nbsp;import android.content.Intent;
+&nbsp;import android.os.Bundle;
+&nbsp;import android.widget.EditText;
+&nbsp;import android.widget.TimePicker;
+&nbsp;import android.widget.Toast;
+&nbsp;import androidx.appcompat.app.AppCompatActivity;
+&nbsp;import androidx.recyclerview.widget.LinearLayoutManager;
+&nbsp;import androidx.recyclerview.widget.RecyclerView;
+&nbsp;import java.util.List;
+&nbsp;import gr.aueb.parkhub.R;
+&nbsp;import gr.aueb.parkhub.domain.ParkingSpot;
+&nbsp;import gr.aueb.parkhub.domain.Time;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;import gr.aueb.parkhub.memorydao.AccountDAOMemory;
+&nbsp;import gr.aueb.parkhub.memorydao.ReservationDAOMemory;
+&nbsp;import gr.aueb.parkhub.memorydao.SpotsDAOMemory;
+&nbsp;import gr.aueb.parkhub.views.util.ProfileFragment;
+&nbsp;import gr.aueb.parkhub.views.homepage.HomepageActivity;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;public class SpotReservationActivity extends AppCompatActivity implements SpotReservationView {</b>
+&nbsp;
+&nbsp;    private ParkingSpotAdapter adapter;
+&nbsp;    /**
+&nbsp;     * Δημιουργεί to layout και αρχικοποιεί
+&nbsp;     * το activity.
+&nbsp;     * @param savedInstanceState το Instance state
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc">&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc">&nbsp;        setContentView(R.layout.spotreservation_activity);</b>
+&nbsp;
+<b class="nc">&nbsp;        final SpotReservationPresenter presenter = new SpotReservationPresenter(</b>
+&nbsp;                this,new AccountDAOMemory(),new SpotsDAOMemory(),new ReservationDAOMemory());
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.spotReservation_back_button).setOnClickListener(v -&gt; presenter.onBack());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.spotReservation_filter_button).setOnClickListener(v-&gt;presenter.onApply());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.spotReservation_confirm_button).setOnClickListener(v-&gt;presenter.onConfirm());</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το περιεχόμενο για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setContent(User user) {
+&nbsp;
+<b class="nc">&nbsp;        Bundle bundle = getIntent().getExtras();</b>
+<b class="nc">&nbsp;        if (bundle != null) {</b>
+<b class="nc">&nbsp;            int userId = bundle.getInt(&quot;userid&quot;);</b>
+<b class="nc">&nbsp;            ProfileFragment fragment = new ProfileFragment();</b>
+<b class="nc">&nbsp;            Bundle args = new Bundle();</b>
+<b class="nc">&nbsp;            args.putInt(&quot;userid&quot;,userId);</b>
+<b class="nc">&nbsp;            fragment.setArguments(args);</b>
+<b class="nc">&nbsp;            getSupportFragmentManager().beginTransaction().replace(R.id.spotreservation_profilefragment, fragment).commit();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        TimePicker timePicker = (TimePicker) this.findViewById(R.id.spotReservation_TimePicker);</b>
+<b class="nc">&nbsp;        timePicker.setIs24HourView(true);</b>
+&nbsp;
+<b class="nc">&nbsp;        List&lt;ParkingSpot&gt; parkingSpots = new SpotsDAOMemory().findAll();</b>
+<b class="nc">&nbsp;        RecyclerView recyclerView = findViewById(R.id.spotReservation_recycler);</b>
+&nbsp;
+<b class="nc">&nbsp;        this.adapter = new ParkingSpotAdapter(this, parkingSpots);</b>
+<b class="nc">&nbsp;        recyclerView.setAdapter(adapter);</b>
+<b class="nc">&nbsp;        recyclerView.setLayoutManager(new LinearLayoutManager(this));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική σελίδα
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void back(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, HomepageActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την ώρα άφιξης του χρήστη
+&nbsp;     * @return η ώρα άφιξης του χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Time getTime() {
+<b class="nc">&nbsp;        TimePicker timePicker = findViewById(R.id.spotReservation_TimePicker);</b>
+<b class="nc">&nbsp;        return new Time(timePicker.getHour(),timePicker.getMinute());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την ώρα άφιξης του χρήστη
+&nbsp;     * @param time η ώρα άφιξης του χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setTime(Time time) {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την περιοχή αναζήτησης
+&nbsp;     * @return η περιοχή αναζήτησης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getRegion() {
+<b class="nc">&nbsp;        return ((EditText)findViewById(R.id.spotReservation_region_text)).getText().toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την περιοχή αναζήτησης
+&nbsp;     * @param region η περιοχή αναζήτησης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setRegion(String region) {
+<b class="nc">&nbsp;        ((EditText)findViewById(R.id.spotReservation_region_text)).setText(region);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Integer getAttachedUserID() {
+<b class="nc">&nbsp;        return this.getIntent().hasExtra(&quot;userid&quot;) ? this.getIntent().getExtras().getInt(&quot;userid&quot;) : 8;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εφαρμόζει φίλτρο στην αναζήτηση
+&nbsp;     * @param constraint ο περιορισμός για το φίλτρο
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void apply(String constraint) {
+<b class="nc">&nbsp;        this.adapter.getFilter().filter(constraint);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιβεβαιώνει την κράτηση μίας θέσης
+&nbsp;     * @param userID το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void confirm(Integer userID){
+<b class="nc">&nbsp;        Intent intent = new Intent(this, HomepageActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το ID για την συγκεκριμένη θέση
+&nbsp;     * @param parkingSpotID το ID της θέσης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setParkingSpotID(Integer parkingSpotID) {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το ID της συγκεκριμένης θέσης
+&nbsp;     * @return το ID της θέσης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Integer getParkingSpotID() {
+<b class="nc">&nbsp;        return adapter.getParkingSpotID();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα στο χρήστη
+&nbsp;     * @param title ο τίτλος του μυνήματος
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void showMessage(String title, String message) {
+<b class="nc">&nbsp;        new AlertDialog.Builder(SpotReservationActivity.this)</b>
+<b class="nc">&nbsp;                .setCancelable(true)</b>
+<b class="nc">&nbsp;                .setTitle(title)</b>
+<b class="nc">&nbsp;                .setMessage(message)</b>
+<b class="nc">&nbsp;                .setPositiveButton(&quot;OK&quot;,null).create().show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα στο χρήστη
+&nbsp;     *
+&nbsp;     * @param toastMessage το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void showToast(String toastMessage) {
+<b class="nc">&nbsp;        Toast.makeText(this,toastMessage,Toast.LENGTH_LONG).show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Απενεργοποίηση της λειτουργίας πίσω
+&nbsp;     * από το navigation menu του android
+&nbsp;     */
+&nbsp;    @SuppressLint(&quot;MissingSuperCall&quot;)
+&nbsp;    @Override
+&nbsp;    public void onBackPressed() {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

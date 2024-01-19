@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SignUpVehiclePresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.signUpVehicle</a>
+</div>
+
+<h1>Coverage Summary for Class: SignUpVehiclePresenter (gr.aueb.parkhub.views.signUpVehicle)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SignUpVehiclePresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (26/26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.signUpVehicle;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.dao.AccountDAO;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;import gr.aueb.parkhub.domain.Vehicle;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Δημήτρης Κεφαλάς
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;public class SignUpVehiclePresenter {
+&nbsp;
+&nbsp;    private AccountDAO accounts;
+&nbsp;    private SignUpVehicleView view;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αρχικοποιεί τον presenter
+&nbsp;     * @param view Ένα instance του view
+&nbsp;     * @param accounts Ένα instance tou AccountDAO
+&nbsp;     */
+<b class="fc">&nbsp;    public SignUpVehiclePresenter(SignUpVehicleView view, AccountDAO accounts){</b>
+<b class="fc">&nbsp;        this.view = view;</b>
+<b class="fc">&nbsp;        this.accounts = accounts;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αν ο χρήστης εισάγει έγκυρα στοιχεία, δημιουργείται ο λογαριασμός του χρήστη
+&nbsp;     * και η ροή μεταφέρεται στο SignInActivity αλλιώς
+&nbsp;     * εμφανίζεται κατάλληλο μύνημα λάθους
+&nbsp;     */
+&nbsp;    public void onSignUpComplete(){
+<b class="fc">&nbsp;        String name = view.getName();</b>
+<b class="fc">&nbsp;        String surname = view.getSurname();</b>
+<b class="fc">&nbsp;        String email = view.getEmail();</b>
+<b class="fc">&nbsp;        String password = view.getPassword();</b>
+<b class="fc">&nbsp;        String telephone = view.getTelephone();</b>
+<b class="fc">&nbsp;        String brand = view.getBrand();</b>
+<b class="fc">&nbsp;        String model = view.getModel();</b>
+<b class="fc">&nbsp;        String color = view.getColor();</b>
+<b class="fc">&nbsp;        String licenseplate = view.getLicensePlate();</b>
+<b class="fc">&nbsp;        String size = view.getSize();</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        if(!brand.matches(&quot;^[^\\d]*$&quot;) || brand.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use letters in the brand text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!model.matches(&quot;[a-zA-Z0-9]+&quot;) || model.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use letters and numbers in the model text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!color.matches(&quot;^[^\\d]*$&quot;) || color.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use letters in the color text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!licenseplate.matches(&quot;[a-zA-Z0-9Α-Ωα-ω]+&quot;) || licenseplate.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use letters and numbers in the license plate text.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(!size.matches(&quot;^[^a-zA-Z]*$&quot;) || size.length() == 0 ){</b>
+<b class="fc">&nbsp;            view.showErrorMessage(&quot;Please only use numbers in the size text.&quot;);</b>
+&nbsp;        }else {
+<b class="fc">&nbsp;            accounts.save(new User(name, surname, email, password, telephone, new Vehicle(brand, Double.parseDouble(size), model, color, licenseplate)));</b>
+<b class="fc">&nbsp;            view.signUpComplete();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SignUpPersonalActivity
+&nbsp;     */
+<b class="fc">&nbsp;    public void onSignUpPersonal(){view.signUpPersonal();}</b>
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PBucksRenewalPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.pBucksRenewal</a>
+</div>
+
+<h1>Coverage Summary for Class: PBucksRenewalPresenter (gr.aueb.parkhub.views.pBucksRenewal)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PBucksRenewalPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88,9%
+  </span>
+  <span class="absValue">
+    (16/18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.pBucksRenewal;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.dao.AccountDAO;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Χριστουλακης Ιωσηφ
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public class PBucksRenewalPresenter {
+&nbsp;
+&nbsp;    private PBucksRenewalView view;
+&nbsp;    private AccountDAO accounts;
+&nbsp;    private User attachedUser;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αρχικοποιεί τον presenter
+&nbsp;     * ώστε ο χρήστης να προσθέσει P-Bucks στον λογαριασμό του
+&nbsp;     * @param view Ένα instance του view
+&nbsp;     * @param accountDAO Ένα instance του AccountDAO
+&nbsp;     */
+<b class="fc">&nbsp;    public PBucksRenewalPresenter(PBucksRenewalView view, AccountDAO accountDAO){</b>
+<b class="fc">&nbsp;        this.view=view;</b>
+<b class="fc">&nbsp;        this.accounts=accountDAO;</b>
+<b class="fc">&nbsp;        Integer attachedUserID = view.getAttachedUserID();</b>
+<b class="fc">&nbsp;        if (attachedUserID == null) {</b>
+<b class="nc">&nbsp;            attachedUser = null;</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            attachedUser = accounts.find(attachedUserID);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if (attachedUser !=null){</b>
+<b class="fc">&nbsp;            view.setContent(attachedUser);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική οθόνη
+&nbsp;     */
+&nbsp;    public void onBack(){
+<b class="nc">&nbsp;        view.homePage(attachedUser.getId());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προσθέτει 10 P-Bucks στον λογαριασμό και
+&nbsp;     * επιστρέφει στην αρχική οθόνη
+&nbsp;     */
+&nbsp;    public void onPack10(){
+<b class="fc">&nbsp;        this.attachedUser.setPBucks(this.attachedUser.getPBucks()+10);</b>
+<b class="fc">&nbsp;        view.pack10(attachedUser.getId());}</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προσθέτει 20 P-Bucks στον λογαριασμό και
+&nbsp;     * επιστρέφει στην αρχική οθόνη
+&nbsp;     */
+&nbsp;    public void onPack20(){
+<b class="fc">&nbsp;        this.attachedUser.setPBucks(this.attachedUser.getPBucks()+20);</b>
+<b class="fc">&nbsp;        view.pack20(attachedUser.getId());}</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προσθέτει 50 P-Bucks στον λογαριασμό και
+&nbsp;     * επιστρέφει στην αρχική οθόνη
+&nbsp;     */
+&nbsp;    public void onPack50(){
+<b class="fc">&nbsp;        this.attachedUser.setPBucks(this.attachedUser.getPBucks()+50);</b>
+<b class="fc">&nbsp;        view.pack50(attachedUser.getId());}</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Προσθέτει 100 P-Bucks στον λογαριασμό και
+&nbsp;     * επιστρέφει στην αρχική οθόνη
+&nbsp;     */
+&nbsp;    public void onPack100(){
+<b class="fc">&nbsp;        this.attachedUser.setPBucks(this.attachedUser.getPBucks()+100);</b>
+<b class="fc">&nbsp;        view.pack100(attachedUser.getId());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

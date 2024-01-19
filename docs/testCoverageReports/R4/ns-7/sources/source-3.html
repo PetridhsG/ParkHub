@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RatingView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.rating</a>
+</div>
+
+<h1>Coverage Summary for Class: RatingView (gr.aueb.parkhub.views.rating)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">RatingView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.rating;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public interface RatingView {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική οθόνη
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void back(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Καταχωρεί την αξιολόγηση στο σύστημα
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void submit(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το περιεχόμενο για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    void setContent(User user);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    Integer getAttachedUserID() ;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει τα σχόλια για την αξιολόγηση
+&nbsp;     * @param comments τα σχόλια
+&nbsp;     */
+&nbsp;    void setComments(String comments);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει την βαθμολογία της αξιολόγησης
+&nbsp;     * @param rating η βαθμολογία
+&nbsp;     */
+&nbsp;    void setRating(double rating);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τα σχόλια της αξιολόγησης
+&nbsp;     * @return τα σχόλια
+&nbsp;     */
+&nbsp;    String getComments();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει την βαθμολογία της αξιολόγησης
+&nbsp;     * @return η βαθμολογία
+&nbsp;     */
+&nbsp;    double getRating();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο Toast μύνημα που εμφανίζεται
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showToastMessage(String message);
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

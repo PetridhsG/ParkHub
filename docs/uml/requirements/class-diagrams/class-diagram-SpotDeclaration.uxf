@@ -1,0 +1,137 @@
+<diagram program="umletino" version="15.1"><zoom_level>4</zoom_level><element><id>UMLClass</id><coordinates><x>168</x><y>44</y><w>140</w><h>268</h></coordinates><panel_attributes>User
+--
+_# uid:Integer = 0_
+# id:Integer 
+# name:String
+# surname:String
+# email:String
+# password:String
+# telephone:String
+# PBucks:Integer
+# averageDelayTime:Double
+# rating:Double
+# ratings:ArrayList&lt;Rating&gt;
+# vehicle:Vehicle
+# delay:Integer
+--
++ User(name:String,surname:String,password:String
+,telephone:String,vehicle:Vehicle)
++ getRatings(): ArrayList&lt;Rating&gt; {query}
++ getVehicle() : Vehicle {query}
++ getAverageDelayTime(): Double {query}
++ getRating() : Rating {query}
++ setRatings(ratings:ArrayList&lt;Rating&gt;)
++ getDelay(): Integer {query}
++ getUid(): Integer {query}
++ getId(): Integer {query}
++ getName(): String {query}
++ getSurname(): String {query}
++ getEmail(): String {query}
++ getPassword(): String {query}
++ getTelephone(): String {query}
++ getPBucks(): Integer {query}
++ setDelay(delay: Integer)
++ setName(name: String)
++ setSurname(surname: String)
++ setEmail(email: String)
++ setPassword(password: String)
++ setTelephone(telephone: String)
++ setPBucks(PBucks: Integer)
++ setVehicle(vehicle:Vehicle)
++ setAverageDelayTime(averageDelayTime:Double)
++ setRating(rating:Double)
++ PBucksRenewal(choice:Integer)
++ equals(o:Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>544</x><y>180</y><w>116</w><h>128</h></coordinates><panel_attributes>Parking Spot
+--
+_+ uid: Integer_
+-id: Integer
+-time: Time
+-availability: Boolean
+-address: Address
+-user: User
+--
++ ParkingSpot(time: Time, 
+address: Address, user: User)
++ getUser(): User {query}
++ getId(): Integer {query}
++ getTime(): Time {query}
++ getAddress(): Address {query}
++ isAvailability(): Boolean {query}
++ setUser(user: User)
++ setId(id: Integer)
++ setAddress (address: Address)
++ setAvailability(availability: Boolean)
++ equals(o: Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>412</x><y>292</y><w>36</w><h>36</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>184</y><w>128</w><h>112</h></coordinates><panel_attributes>SpotDeclarationActivity
+--
+-presenter: SpotDeclarationPresenter
+--
++setContent(user: User) : void
++getAttcahedUserID(): Integer
++back(userID: Integer): void
++declare(userID: Integer): void
++setStreet(street: String): void
++setStNumber(stNumber: int): void
++setCity(city: String): void
++setRegion(region: String): void
++getStreet(): String
++getStNumber(): String
++getCity(): String
++getRegion(): String
++showErrorMessage(message: String): void
++getTime(): Time
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>348</x><y>348</y><w>132</w><h>68</h></coordinates><panel_attributes>SpotDeclarationPresenter
+--
+-view: SpotDeclarationView
+-spots: SpotsDAO
+-attachedUser: User
+-accounts: AccountDAO
+--
++SpotDeclarationPresenter(view: SpotDeclarationView
+accountDAO : accountDAO, spotsDAO : spotsDAO)
++onBack(): void
++onDeclare(): void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>552</x><y>360</y><w>112</w><h>48</h></coordinates><panel_attributes>SpotsDAOMemory
+--
+#parkingSpots: ArrayList&lt;ParkingSpot&gt;
+--
++delete(parkingSpot : ParkingSpot): void
++save(parkingSpot : ParkingSpot): void
++findAll(): List&lt;ParkingSpot&gt;
++find(parkingSpotId: Integer): ParkingSpot
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>176</x><y>356</y><w>108</w><h>64</h></coordinates><panel_attributes>AccountDAOMemory
+--
+#users: ArrayList&lt;User&gt;
+-authorizedIDS: ArrayList&lt;Integer&gt;
+--
++delete(user: User): void
++save(user: User): void
++findAll(): List&lt;User&gt;
++find(userId: Integer): User
++findUserByEmail(email: String): User
++authorized(id: Integer): Boolean
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLInterface</id><coordinates><x>412</x><y>316</y><w>8</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>412</x><y>324</y><w>12</w><h>32</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>364</y><w>44</w><h>16</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>308</x><y>364</y><w>8</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>364</y><w>36</w><h>16</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>476</x><y>372</y><w>44</w><h>16</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>90;20;10;20</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>512</x><y>372</y><w>8</w><h>28</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>516</x><y>372</y><w>44</w><h>16</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>292</y><w>12</w><h>64</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>380</y><w>76</w><h>16</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>476</x><y>384</y><w>84</w><h>16</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element><element><id>Relation</id><coordinates><x>228</x><y>308</y><w>16</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>304</y><w>16</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>288</y><w>68</w><h>68</h></coordinates><panel_attributes>lt=-
+m1=1</panel_attributes><additional_attributes>10;10;150;10;150;150</additional_attributes></element></diagram>

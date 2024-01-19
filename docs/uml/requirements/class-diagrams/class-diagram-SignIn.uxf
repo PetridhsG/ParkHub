@@ -1,0 +1,90 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>540</x><y>756</y><w>297</w><h>117</h></coordinates><panel_attributes>SignInPresenter
+--
+-view: SignInView
+-accounts: AccountDAO
+--
++SignInPresenter(view: SignInView,
+accountDAO : AccountDAO)
++onHomePage(): void
++onSignUpPersonal(): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>549</x><y>450</y><w>261</w><h>126</h></coordinates><panel_attributes>SignInActivity
+--
+-presenter: SignInPresenter
+-boolean: initialized
+--
++homePage(userID: Integer): void
++signUpPersonal(): void
++showErrorMessage(message: String): void
++getEmail(): String
++getPassword(): String
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>567</y><w>27</w><h>207</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;210;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>612</x><y>657</y><w>27</w><h>117</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>612</x><y>567</y><w>81</w><h>99</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>612</x><y>639</y><w>18</w><h>63</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>27</x><y>747</y><w>243</w><h>144</h></coordinates><panel_attributes>AccountDAOMemory
+--
+#users: ArrayList&lt;User&gt;
+-authorizedIDS: ArrayList&lt;Integer&gt;
+--
++delete(user: User): void
++save(user: User): void
++findAll(): List&lt;User&gt;
++find(userId: Integer): User
++findUserByEmail(email: String): User
++authorized(id: Integer): Boolean
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>765</y><w>144</w><h>36</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>396</x><y>765</y><w>162</w><h>36</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>801</y><w>297</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>310;20;10;20</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>387</x><y>765</y><w>18</w><h>63</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>315</w><h>603</h></coordinates><panel_attributes>User
+--
+_# uid:Integer = 0_
+# id:Integer 
+# name:String
+# surname:String
+# email:String
+# password:String
+# telephone:String
+# PBucks:Integer
+# averageDelayTime:Double
+# rating:Double
+# ratings:ArrayList&lt;Rating&gt;
+# vehicle:Vehicle
+# delay:Integer
+--
++ User(name:String,surname:String,password:String
+,telephone:String,vehicle:Vehicle)
++ getRatings(): ArrayList&lt;Rating&gt; {query}
++ getVehicle() : Vehicle {query}
++ getAverageDelayTime(): Double {query}
++ getRating() : Rating {query}
++ setRatings(ratings:ArrayList&lt;Rating&gt;)
++ getDelay(): Integer {query}
++ getUid(): Integer {query}
++ getId(): Integer {query}
++ getName(): String {query}
++ getSurname(): String {query}
++ getEmail(): String {query}
++ getPassword(): String {query}
++ getTelephone(): String {query}
++ getPBucks(): Integer {query}
++ setDelay(delay: Integer)
++ setName(name: String)
++ setSurname(surname: String)
++ setEmail(email: String)
++ setPassword(password: String)
++ setTelephone(telephone: String)
++ setPBucks(PBucks: Integer)
++ setVehicle(vehicle:Vehicle)
++ setAverageDelayTime(averageDelayTime:Double)
++ setRating(rating:Double)
++ PBucksRenewal(choice:Integer)
++ equals(o:Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>594</y><w>36</w><h>171</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element></diagram>

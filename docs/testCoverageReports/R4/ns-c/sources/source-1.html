@@ -1,0 +1,331 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ParkingSpotAdapter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.spotReservation</a>
+</div>
+
+<h1>Coverage Summary for Class: ParkingSpotAdapter (gr.aueb.parkhub.views.spotReservation)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ParkingSpotAdapter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/26)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ParkingSpotAdapter$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/28)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ParkingSpotAdapter$ViewHolder</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/56)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.spotReservation;
+&nbsp;
+&nbsp;import android.app.AlertDialog;
+&nbsp;import android.content.Context;
+&nbsp;import android.text.TextUtils;
+&nbsp;import android.util.Log;
+&nbsp;import android.view.LayoutInflater;
+&nbsp;import android.view.View;
+&nbsp;import android.view.ViewGroup;
+&nbsp;import android.widget.Filter;
+&nbsp;import android.widget.Filterable;
+&nbsp;import android.widget.TextView;
+&nbsp;import androidx.annotation.NonNull;
+&nbsp;import androidx.recyclerview.widget.RecyclerView;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import gr.aueb.parkhub.R;
+&nbsp;import gr.aueb.parkhub.domain.ParkingSpot;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+<b class="nc">&nbsp;public class ParkingSpotAdapter extends RecyclerView.Adapter&lt;ParkingSpotAdapter.ViewHolder&gt; implements Filterable {</b>
+&nbsp;
+&nbsp;    private List&lt;ParkingSpot&gt; parkingSpots;
+&nbsp;    private List&lt;ParkingSpot&gt; filteredParkingSpots;
+&nbsp;    private Context context;
+&nbsp;    private Integer parkingSpotID ;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αρχικοποίηση των αντικειμένων του adapter
+&nbsp;     * @param context το activity που περιέχεται
+&nbsp;     * @param parkingSpots οι θέσεις που περιέχει
+&nbsp;     */
+<b class="nc">&nbsp;    public ParkingSpotAdapter(Context context, List&lt;ParkingSpot&gt; parkingSpots) {</b>
+<b class="nc">&nbsp;        this.context = context;</b>
+<b class="nc">&nbsp;        this.parkingSpots = parkingSpots;</b>
+<b class="nc">&nbsp;        this.filteredParkingSpots = new ArrayList&lt;&gt;(parkingSpots);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @NonNull
+&nbsp;    @Override
+&nbsp;    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+<b class="nc">&nbsp;        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parking_spot_item, parent, false);</b>
+<b class="nc">&nbsp;        return new ViewHolder(view);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+<b class="nc">&nbsp;        final ParkingSpot spot = filteredParkingSpots.get(position);</b>
+<b class="nc">&nbsp;        holder.textView.setText(spot.getAddress().toString() +&quot; &quot;+ spot.getTime());</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        holder.itemView.setOnClickListener(v -&gt; showReservationConfirmationPopup(spot));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int getItemCount() {
+<b class="nc">&nbsp;        return filteredParkingSpots.size();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static class ViewHolder extends RecyclerView.ViewHolder {
+&nbsp;        TextView textView;
+&nbsp;
+&nbsp;        public ViewHolder(@NonNull View itemView) {
+<b class="nc">&nbsp;            super(itemView);</b>
+<b class="nc">&nbsp;            textView = itemView.findViewById(R.id.parking_spot_item_text);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει popup παράθυρο περιμένοντας
+&nbsp;     * την απάντηση του χρήστη
+&nbsp;     * @param spot η συγκεκριμένη θέση
+&nbsp;     */
+&nbsp;    private void showReservationConfirmationPopup(ParkingSpot spot) {
+<b class="nc">&nbsp;        AlertDialog.Builder builder = new AlertDialog.Builder(context);</b>
+<b class="nc">&nbsp;        builder.setTitle(&quot;Select Spot&quot;);</b>
+<b class="nc">&nbsp;        builder.setMessage(&quot;Are you sure you want to select:\n&quot; + spot.getAddress().toString() + &quot; &quot;</b>
+<b class="nc">&nbsp;                + spot.getTime().toString() + &quot;\nFrom user:&quot;</b>
+<b class="nc">&nbsp;                + &quot;\nName: &quot; + spot.getUser().getName()</b>
+<b class="nc">&nbsp;                + &quot;\nSurname: &quot; + spot.getUser().getSurname()</b>
+<b class="nc">&nbsp;                + &quot;\nAverageDelayTime: &quot; + spot.getUser().getAverageDelayTime()</b>
+<b class="nc">&nbsp;                + &quot;\nRating: &quot; + + spot.getUser().getRating()</b>
+&nbsp;        );
+&nbsp;
+<b class="nc">&nbsp;        builder.setPositiveButton(&quot;Yes&quot;, (dialog, which) -&gt; { handleReservationConfirmation(spot);});</b>
+&nbsp;
+<b class="nc">&nbsp;        builder.setNegativeButton(&quot;No&quot;, (dialog, which) -&gt; {dialog.dismiss();});</b>
+&nbsp;
+<b class="nc">&nbsp;        AlertDialog dialog = builder.create();</b>
+<b class="nc">&nbsp;        dialog.show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Όταν ο χρήστης απαντήσει θετικά
+&nbsp;     * @param spot
+&nbsp;     */
+&nbsp;    private void handleReservationConfirmation(ParkingSpot spot) {
+<b class="nc">&nbsp;        this.parkingSpotID = spot.getId();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το ID της επιλεγμένης θέσης
+&nbsp;     * @return το ID της επιλεγμένης θέσης
+&nbsp;     */
+&nbsp;    public Integer getParkingSpotID(){
+<b class="nc">&nbsp;        return this.parkingSpotID;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το φίλτρο
+&nbsp;     * @return το φίλτρο
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Filter getFilter() {
+<b class="nc">&nbsp;        return new Filter() {</b>
+&nbsp;
+&nbsp;            /**
+&nbsp;             * Εφαρμόζει το φίλτρο βάσει του constraint
+&nbsp;             * @param constraint ο περιορισμός για το φίλτρο
+&nbsp;             * @return οι φιλτραρισμένες θέσεις
+&nbsp;             */
+&nbsp;            @Override
+&nbsp;            protected FilterResults performFiltering(CharSequence constraint) {
+<b class="nc">&nbsp;                String filterPattern = constraint.toString().toLowerCase().trim();</b>
+<b class="nc">&nbsp;                int regionIndex = constraint.toString().indexOf(&quot;Region:&quot;);</b>
+<b class="nc">&nbsp;                int timeIndex = constraint.toString().indexOf(&quot;Time:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                String regionSubstring = constraint.toString().substring(regionIndex + &quot;Region:&quot;.length(), timeIndex);</b>
+<b class="nc">&nbsp;                String timeSubstring = constraint.toString().substring(timeIndex + &quot;Time:&quot;.length());</b>
+&nbsp;
+<b class="nc">&nbsp;                regionSubstring = regionSubstring.toLowerCase().trim();</b>
+<b class="nc">&nbsp;                timeSubstring = timeSubstring.trim();</b>
+&nbsp;
+<b class="nc">&nbsp;                Log.d(&quot;SplitRegionAndTime&quot;, &quot;Region: &quot; + regionSubstring);</b>
+&nbsp;
+<b class="nc">&nbsp;                String[] parts = timeSubstring.split(&quot;:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                String hour = parts[0].trim();</b>
+<b class="nc">&nbsp;                String minutes = parts[1].trim();</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                List&lt;ParkingSpot&gt; filteredList = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;                if (TextUtils.isEmpty(filterPattern)) {</b>
+<b class="nc">&nbsp;                    filteredList.addAll(parkingSpots);</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    for (ParkingSpot spot : parkingSpots) {</b>
+<b class="nc">&nbsp;                        if (spot.getAddress().getRegion().toLowerCase().contains(regionSubstring) &amp;&amp;</b>
+<b class="nc">&nbsp;                                spot.getTime().getHour() &gt;= Integer.parseInt(hour)-1 &amp;&amp;</b>
+<b class="nc">&nbsp;                                spot.getTime().getHour() &lt;= Integer.parseInt(hour)+1 &amp;&amp;</b>
+<b class="nc">&nbsp;                                spot.isAvailability()</b>
+&nbsp;                        ) {
+<b class="nc">&nbsp;                            filteredList.add(spot);</b>
+&nbsp;                        }
+<b class="nc">&nbsp;                    }</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                FilterResults results = new FilterResults();</b>
+<b class="nc">&nbsp;                results.values = filteredList;</b>
+<b class="nc">&nbsp;                return results;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            /**
+&nbsp;             * Εφαρμόζει το φίλτρο στο recycler
+&nbsp;             * @param constraint ο περιορισμός για το φίλτρο
+&nbsp;             * @param results οι φιλτραρισμένες θέσεις
+&nbsp;             *
+&nbsp;             */
+&nbsp;            @Override
+&nbsp;            protected void publishResults(CharSequence constraint, FilterResults results) {
+<b class="nc">&nbsp;                filteredParkingSpots.clear();</b>
+<b class="nc">&nbsp;                filteredParkingSpots.addAll((List&lt;ParkingSpot&gt;) results.values);</b>
+<b class="nc">&nbsp;                notifyDataSetChanged();</b>
+&nbsp;            }
+&nbsp;        };
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > EditProfileView</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.editProfile</a>
+</div>
+
+<h1>Coverage Summary for Class: EditProfileView (gr.aueb.parkhub.views.editProfile)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">EditProfileView</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.editProfile;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Χριστουλάκης Ιωσήφ
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public interface EditProfileView {
+&nbsp;    /**
+&nbsp;     * Θέτει τα στοιχεία που θα εμφανιστούν
+&nbsp;     * για τον συνδεδεμένο χρήστη
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    void setContent(User user);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο ViewProfileActivity
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void homePage(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο ViewProfileActivity
+&nbsp;     * και ενημερώνει τον χρήστη πως οι αλλαγές αποθηκεύτηκαν επιτυχώς
+&nbsp;     * @param userID Το userID του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    void finish(Integer userID);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το id του συνδεδεμένου χρήστη
+&nbsp;     * @return το id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    Integer getAttachedUserID();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Εμφανίζει μύνημα σε περίπτωση λάθος τιμής εισαγωγής
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    void showErrorMessage(String message);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το όνομα
+&nbsp;     * @return το όνομα
+&nbsp;     */
+&nbsp;    String getName();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το επώνυμο
+&nbsp;     * @return το επώνυμο
+&nbsp;     */
+&nbsp;    String getSurname();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το email
+&nbsp;     * @return το email
+&nbsp;     */
+&nbsp;    String getEmail();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τον κωδικό
+&nbsp;     * @return τον κωδικό
+&nbsp;     */
+&nbsp;    String getPassword();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το τηλέφωνο
+&nbsp;     * @return το τηλέφωνο
+&nbsp;     */
+&nbsp;    String getTelephone();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τη μάρκα του αυτοκινήτου
+&nbsp;     * @return τη μάρκα του αυτοκινήτου
+&nbsp;     */
+&nbsp;    String getBrand();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το μοντέλο του αυτοκινήτου
+&nbsp;     * @return το μοντέλο του αυτοκινήτου
+&nbsp;     */
+&nbsp;    String getModel();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το χρώμα του αυτοκινήτου
+&nbsp;     * @return το χρώμα του αυτοκινήτου
+&nbsp;     */
+&nbsp;    String getColor();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει τη πινακίδα του αυτοκινήτου
+&nbsp;     * @return τη πινακίδα του αυτοκινήτου
+&nbsp;     */
+&nbsp;    String getLicensePlate();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το μέγεθος του αυτοκινήτου
+&nbsp;     * @return το μέγεθος του αυτοκινήτου
+&nbsp;     */
+&nbsp;    String getSize();
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

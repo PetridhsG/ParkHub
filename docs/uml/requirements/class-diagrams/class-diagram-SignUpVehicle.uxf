@@ -1,0 +1,97 @@
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><element><id>UMLClass</id><coordinates><x>375</x><y>435</y><w>165</w><h>65</h></coordinates><panel_attributes>SignUpVehiclePresenter
+--
+-view: SignUpVehicleView
+-accounts: AccountDAO
+--
++SignUpVehiclePresenter(view: SignVehicleView,
+accountDAO : AccountDAO)
++onSignUpComplete(): void
++onSignUpPersonal(): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>205</y><w>145</w><h>130</h></coordinates><panel_attributes>SignUpVehicleActivity
+--
+-presenter: SignUpVehiclePresenter
+--
++signUpComplete(): void
++signUpPersonal(): void
++showErrorMessage(message: String): void
++getName(): String
++getSurname(): String
++getEmail(): String
++getPassword(): String
++getTelephone(): String
++getBrand(): String
++getModel(): String
++getColor(): String
++getLicensePlate(): String
++getSize(): String
++getIntent(): Intent
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>455</x><y>330</y><w>15</w><h>115</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;210;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>415</x><y>380</y><w>15</w><h>65</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>415</x><y>330</y><w>45</w><h>55</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>415</x><y>370</y><w>10</w><h>35</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>435</y><w>135</w><h>80</h></coordinates><panel_attributes>AccountDAOMemory
+--
+#users: ArrayList&lt;User&gt;
+-authorizedIDS: ArrayList&lt;Integer&gt;
+--
++delete(user: User): void
++save(user: User): void
++findAll(): List&lt;User&gt;
++find(userId: Integer): User
++findUserByEmail(email: String): User
++authorized(id: Integer): Boolean
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>445</y><w>80</w><h>20</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>295</x><y>445</y><w>90</w><h>20</h></coordinates><panel_attributes>lt=-
+&lt;&lt;interface&gt;&gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>465</y><w>165</w><h>20</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>310;20;10;20</additional_attributes></element><element><id>UMLInterface</id><coordinates><x>290</x><y>445</y><w>10</w><h>35</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>75</x><y>20</y><w>175</w><h>335</h></coordinates><panel_attributes>User
+--
+_# uid:Integer = 0_
+# id:Integer 
+# name:String
+# surname:String
+# email:String
+# password:String
+# telephone:String
+# PBucks:Integer
+# averageDelayTime:Double
+# rating:Double
+# ratings:ArrayList&lt;Rating&gt;
+# vehicle:Vehicle
+# delay:Integer
+--
++ User(name:String,surname:String,password:String
+,telephone:String,vehicle:Vehicle)
++ getRatings(): ArrayList&lt;Rating&gt; {query}
++ getVehicle() : Vehicle {query}
++ getAverageDelayTime(): Double {query}
++ getRating() : Rating {query}
++ setRatings(ratings:ArrayList&lt;Rating&gt;)
++ getDelay(): Integer {query}
++ getUid(): Integer {query}
++ getId(): Integer {query}
++ getName(): String {query}
++ getSurname(): String {query}
++ getEmail(): String {query}
++ getPassword(): String {query}
++ getTelephone(): String {query}
++ getPBucks(): Integer {query}
++ setDelay(delay: Integer)
++ setName(name: String)
++ setSurname(surname: String)
++ setEmail(email: String)
++ setPassword(password: String)
++ setTelephone(telephone: String)
++ setPBucks(PBucks: Integer)
++ setVehicle(vehicle:Vehicle)
++ setAverageDelayTime(averageDelayTime:Double)
++ setRating(rating:Double)
++ PBucksRenewal(choice:Integer)
++ equals(o:Object): Boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>350</y><w>20</w><h>95</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=*</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element></diagram>

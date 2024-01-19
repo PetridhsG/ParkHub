@@ -1,0 +1,328 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SignUpVehicleActivity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.signUpVehicle</a>
+</div>
+
+<h1>Coverage Summary for Class: SignUpVehicleActivity (gr.aueb.parkhub.views.signUpVehicle)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SignUpVehicleActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/27)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SignUpVehicleActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">SignUpVehicleActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/31)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.signUpVehicle;
+&nbsp;
+&nbsp;import android.annotation.SuppressLint;
+&nbsp;import android.app.AlertDialog;
+&nbsp;import android.content.Intent;
+&nbsp;import android.os.Bundle;
+&nbsp;import android.view.View;
+&nbsp;import android.widget.EditText;
+&nbsp;import androidx.appcompat.app.AppCompatActivity;
+&nbsp;import gr.aueb.parkhub.R;
+&nbsp;import gr.aueb.parkhub.memorydao.AccountDAOMemory;
+&nbsp;import gr.aueb.parkhub.views.signIn.SignInActivity;
+&nbsp;import gr.aueb.parkhub.views.signUpPersonal.SignUpPersonalActivity;
+&nbsp;
+<b class="nc">&nbsp;public class SignUpVehicleActivity extends AppCompatActivity implements SignUpVehicleView {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @author Δημήτρης Κεφαλάς
+&nbsp;     *
+&nbsp;     * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp;     *
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc">&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc">&nbsp;        setContentView(R.layout.signupvehicle_activity);</b>
+<b class="nc">&nbsp;        final SignUpVehiclePresenter presenter = new SignUpVehiclePresenter(this, new AccountDAOMemory());</b>
+<b class="nc">&nbsp;        findViewById(R.id.signUp_vehicle_finish_button).setOnClickListener(new View.OnClickListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void onClick(View v) {
+<b class="nc">&nbsp;                presenter.onSignUpComplete();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.signUp_vehicle_back_button).setOnClickListener(new View.OnClickListener() {</b>
+&nbsp;            @Override
+&nbsp;            public void onClick(View v) {
+<b class="nc">&nbsp;                presenter.onSignUpPersonal();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SignInActivity
+&nbsp;     */
+&nbsp;    public void signUpComplete() {
+<b class="nc">&nbsp;        Intent intent2 = new Intent(this, SignInActivity.class);</b>
+<b class="nc">&nbsp;        startActivity(intent2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SignUpPersonalActivity
+&nbsp;     */
+&nbsp;    public void signUpPersonal() {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, SignUpPersonalActivity.class);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο μύνημα που εμφανίζεται σε περίπτωση error
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void showErrorMessage(String message) {
+<b class="nc">&nbsp;        new AlertDialog.Builder(SignUpVehicleActivity.this)</b>
+<b class="nc">&nbsp;                .setCancelable(true)</b>
+<b class="nc">&nbsp;                .setTitle(&quot;Input Error&quot;)</b>
+<b class="nc">&nbsp;                .setMessage(message)</b>
+<b class="nc">&nbsp;                .setPositiveButton(&quot;OK&quot;, null).create().show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Name που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Name που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getName() {
+<b class="nc">&nbsp;        return getIntent().getStringExtra(&quot;name&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Surname που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Surname που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getSurname() {
+<b class="nc">&nbsp;        return getIntent().getStringExtra(&quot;surname&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Email που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Email που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getEmail() {
+<b class="nc">&nbsp;        return getIntent().getStringExtra(&quot;email&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Password που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Password που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getPassword() {
+<b class="nc">&nbsp;        return getIntent().getStringExtra(&quot;password&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Telephone που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Telephone που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getTelephone() {
+<b class="nc">&nbsp;        return getIntent().getStringExtra(&quot;phoneNumber&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Brand που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Brand που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getBrand() {
+<b class="nc">&nbsp;        return ((EditText) findViewById(R.id.signUpVehicle_brand_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Model που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Model που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getModel() {
+<b class="nc">&nbsp;        return ((EditText) findViewById(R.id.signUpVehicle_model_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Color που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Color που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getColor() {
+<b class="nc">&nbsp;        return ((EditText) findViewById(R.id.signUpVehicle_color_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το LicensePlate που συμπληρώνει ο χρήστης
+&nbsp;     * @return το LicensePlate που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getLicensePlate() {
+<b class="nc">&nbsp;        return ((EditText) findViewById(R.id.signUpVehicle_LicensePlate_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Size που συμπληρώνει ο χρήστης
+&nbsp;     * @return το Size που συμπληρώνεται από τον χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getSize() {
+<b class="nc">&nbsp;        return ((EditText) findViewById(R.id.signUpVehicle_Size_text)).getText().toString().trim();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Intent
+&nbsp;     * @return το Intent
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Intent getIntent() {
+<b class="nc">&nbsp;        return super.getIntent();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Απενεργοποίηση της λειτουργίας πίσω
+&nbsp;     * από το navigation menu του android
+&nbsp;     */
+&nbsp;    @SuppressLint(&quot;MissingSuperCall&quot;)
+&nbsp;    @Override
+&nbsp;    public void onBackPressed() {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

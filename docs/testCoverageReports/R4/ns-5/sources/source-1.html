@@ -1,0 +1,336 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > HomepageActivity</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.homepage</a>
+</div>
+
+<h1>Coverage Summary for Class: HomepageActivity (gr.aueb.parkhub.views.homepage)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">HomepageActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/73)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.homepage;
+&nbsp;
+&nbsp;import android.annotation.SuppressLint;
+&nbsp;import android.app.AlertDialog;
+&nbsp;import android.content.Intent;
+&nbsp;import android.os.Bundle;
+&nbsp;import android.view.View;
+&nbsp;import android.widget.TextView;
+&nbsp;import android.widget.Toast;
+&nbsp;import androidx.appcompat.app.AppCompatActivity;
+&nbsp;import gr.aueb.parkhub.R;
+&nbsp;import gr.aueb.parkhub.domain.ParkedUser;
+&nbsp;import gr.aueb.parkhub.domain.SearchingUser;
+&nbsp;import gr.aueb.parkhub.domain.SpotReservation;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;import gr.aueb.parkhub.memorydao.AccountDAOMemory;
+&nbsp;import gr.aueb.parkhub.views.util.ProfileFragment;
+&nbsp;import gr.aueb.parkhub.views.pBucksRenewal.PBucksRenewalActivity;
+&nbsp;import gr.aueb.parkhub.views.rating.RatingActivity;
+&nbsp;import gr.aueb.parkhub.views.spotDeclaration.SpotDeclarationActivity;
+&nbsp;import gr.aueb.parkhub.views.spotReservation.SpotReservationActivity;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.views.viewProfile.ViewProfileActivity;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+<b class="nc">&nbsp;public class HomepageActivity extends AppCompatActivity implements HomepageView {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Δημιουργεί to layout και αρχικοποιεί
+&nbsp;     * το activity.
+&nbsp;     * @param savedInstanceState το Instance state
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    protected void onCreate(Bundle savedInstanceState) {
+<b class="nc">&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc">&nbsp;        setContentView(R.layout.homepage_activity);</b>
+&nbsp;
+<b class="nc">&nbsp;        HomepagePresenter presenter = new HomepagePresenter(this,new AccountDAOMemory());</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_viewProfile_button).setOnClickListener(v -&gt; presenter.onViewProfile());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_addPBucks_button).setOnClickListener(v -&gt; presenter.onAddPBucks());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_declareSpot_button).setOnClickListener(v -&gt; presenter.onDeclareSpot());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_reserveSpot_button).setOnClickListener(v -&gt; presenter.onReserveSpot());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_exchangeSpot_button).setOnClickListener(v -&gt; presenter.onExchangeSpot());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_falseSpot_button).setOnClickListener(v -&gt; presenter.onReportFalseSpot());</b>
+&nbsp;
+<b class="nc">&nbsp;        findViewById(R.id.homepage_viewStatistics_button).setOnClickListener(v -&gt; presenter.onViewStatistics());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Θέτει το περιεχόμενο για τον συνδεδεμένο χρήστη
+&nbsp;     * avάλογα ποιας κλάσης instance είναι
+&nbsp;     * @param user ο συνδεδεμένος χρήστης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setContent(User user) {
+&nbsp;
+<b class="nc">&nbsp;        Bundle bundle = getIntent().getExtras();</b>
+<b class="nc">&nbsp;        if (bundle != null) {</b>
+<b class="nc">&nbsp;            int userId = bundle.getInt(&quot;userid&quot;);</b>
+<b class="nc">&nbsp;            ProfileFragment fragment = new ProfileFragment();</b>
+<b class="nc">&nbsp;            Bundle args = new Bundle();</b>
+<b class="nc">&nbsp;            args.putInt(&quot;userid&quot;,userId);</b>
+<b class="nc">&nbsp;            fragment.setArguments(args);</b>
+<b class="nc">&nbsp;            getSupportFragmentManager().beginTransaction().replace(R.id.homepage_profilefragment, fragment).commit();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if (user instanceof SearchingUser){</b>
+<b class="nc">&nbsp;            SpotReservation sp = ((SearchingUser) user).getSpotReservation();</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_spot_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_address_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_time_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_username_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_vehicle_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_spot_text)).setText(&quot;You have reserved the following spot:&quot;);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_address_text)).setText(sp.getParkingSpot().getAddress().toString());</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_time_text)).setText(&quot;Time: &quot; + sp.getArrivalTime().toString() );</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_username_text)).setText(&quot;User Name: &quot; + sp.getParkingSpot().getUser().getName() + &quot; &quot; + sp.getParkingSpot().getUser().getSurname());</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_vehicle_text)).setText(&quot;Vehicle Info: &quot; + sp.getParkingSpot().getUser().getVehicle().toString());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        else if (user instanceof ParkedUser) {</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_spot_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_address_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_time_text)).setVisibility(View.VISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_username_text)).setVisibility(View.INVISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_vehicle_text)).setVisibility(View.INVISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_spot_text)).setText(&quot;You have declared the following spot:&quot;);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_address_text)).setText(((ParkedUser)user).getParkingSpot().getAddress().toString());</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_time_text)).setText(&quot;Time: &quot; + ((ParkedUser)user).getParkingSpot().getTime().toString() );</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_spot_text)).setVisibility(View.INVISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_address_text)).setVisibility(View.INVISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_time_text)).setVisibility(View.INVISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_username_text)).setVisibility(View.INVISIBLE);</b>
+<b class="nc">&nbsp;            ((TextView)findViewById(R.id.homepage_vehicle_text)).setVisibility(View.INVISIBLE);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει το Id του συνδεδεμένου χρήστη
+&nbsp;     * @return το Id του συγκεκριμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Integer getAttachedUserID() {
+<b class="nc">&nbsp;        return this.getIntent().hasExtra(&quot;userid&quot;) ? this.getIntent().getExtras().getInt(&quot;userid&quot;) : 9; // edw to 8 na ginei null</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο ViewProfileActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void viewProfile(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, ViewProfileActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο PBucksRenewalActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void addPBucks(Integer userID){
+<b class="nc">&nbsp;        Intent intent = new Intent(this, PBucksRenewalActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SpotDeclaationActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void declareSpot(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, SpotDeclarationActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο SpotReservationActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void reserveSpot(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, SpotReservationActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Πραγματοποιείται η διαδικασία ανταλλαγής θέσης
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void exchangeSpot(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, HomepageActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο RatingActivity
+&nbsp;     * @param userID το Id του συνδεδεμένου χρήστη
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void reportFalseSpot(Integer userID) {
+<b class="nc">&nbsp;        Intent intent = new Intent(this, RatingActivity.class);</b>
+<b class="nc">&nbsp;        intent.putExtra(&quot;userid&quot;,userID);</b>
+<b class="nc">&nbsp;        startActivity(intent);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Η ροή μεταφέρεται στο StatisticsProfile
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void viewStatistics(Integer userID) {
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο μύνημα που εμφανίζεται σε περίπτωση error
+&nbsp;     * @param title ο τίτλος του μυνήματος
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void showErrorMessage(String title, String message)
+&nbsp;    {
+<b class="nc">&nbsp;        new AlertDialog.Builder(HomepageActivity.this)</b>
+<b class="nc">&nbsp;                .setCancelable(true)</b>
+<b class="nc">&nbsp;                .setTitle(title)</b>
+<b class="nc">&nbsp;                .setMessage(message)</b>
+<b class="nc">&nbsp;                .setPositiveButton(&quot;OK&quot;,null).create().show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Tο Toast μύνημα που εμφανίζεται
+&nbsp;     * @param message το περιεχόμενο του μυνήματος
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void showToastMessage(String message){
+<b class="nc">&nbsp;        Toast.makeText(this,message, Toast.LENGTH_LONG).show();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Απενεργοποίηση της λειτουργίας πίσω
+&nbsp;     * από το navigation menu του android
+&nbsp;     */
+&nbsp;    @SuppressLint(&quot;MissingSuperCall&quot;)
+&nbsp;    @Override
+&nbsp;    public void onBackPressed() {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>

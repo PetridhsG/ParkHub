@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RatingPresenter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">gr.aueb.parkhub.views.rating</a>
+</div>
+
+<h1>Coverage Summary for Class: RatingPresenter (gr.aueb.parkhub.views.rating)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RatingPresenter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93,9%
+  </span>
+  <span class="absValue">
+    (31/33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package gr.aueb.parkhub.views.rating;
+&nbsp;
+&nbsp;import gr.aueb.parkhub.dao.AccountDAO;
+&nbsp;import gr.aueb.parkhub.dao.SpotsDAO;
+&nbsp;import gr.aueb.parkhub.domain.Rating;
+&nbsp;import gr.aueb.parkhub.domain.SearchingUser;
+&nbsp;import gr.aueb.parkhub.domain.SpotReservation;
+&nbsp;import gr.aueb.parkhub.domain.User;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Ιωάννης Πετρίδης
+&nbsp; *
+&nbsp; * Υλοποιήθηκε στα πλαίσια του μαθήματος Τεχνολογία Λογισμικού το έτος 2023-2024.
+&nbsp; *
+&nbsp; */
+&nbsp;public class RatingPresenter {
+&nbsp;
+&nbsp;    private AccountDAO accounts;
+&nbsp;    private SpotsDAO spots;
+&nbsp;    private User attachedUser;
+&nbsp;    private RatingView view;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Αρχικοποιεί τον presenter
+&nbsp;     * @param view Ένα instance του view
+&nbsp;     * @param accounts Ένα instance του AccountDAO
+&nbsp;     * @param spots Ένα instance του SpotsDAO
+&nbsp;     */
+<b class="fc">&nbsp;    public RatingPresenter(RatingView view,AccountDAO accounts,SpotsDAO spots){</b>
+<b class="fc">&nbsp;        this.view = view;</b>
+<b class="fc">&nbsp;        this.accounts = accounts;</b>
+<b class="fc">&nbsp;        this.spots = spots;</b>
+&nbsp;
+<b class="fc">&nbsp;        Integer attachedUserID = view.getAttachedUserID();</b>
+<b class="fc">&nbsp;        this.attachedUser = attachedUserID == null ? null : accounts.find(attachedUserID);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (attachedUser !=null){</b>
+<b class="fc">&nbsp;            view.setContent(attachedUser);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Επιστρέφει στην αρχική οθόνη
+&nbsp;     * θέτοντας την ανταλλαγή ως ανεπιτυχή
+&nbsp;     * και απελευθερόνοντας την θέση
+&nbsp;     */
+&nbsp;    public void onBack(){
+<b class="fc">&nbsp;        SpotReservation sr = ((SearchingUser) this.attachedUser).getSpotReservation();</b>
+<b class="fc">&nbsp;        sr.getSpotexchange().setValidity(false);</b>
+<b class="fc">&nbsp;        sr.getSpotexchange().setSuccess(false);</b>
+<b class="fc">&nbsp;        spots.delete(sr.getParkingSpot());</b>
+<b class="fc">&nbsp;        int previousID = this.attachedUser.getId();</b>
+<b class="fc">&nbsp;        User user = new User(this.attachedUser);</b>
+<b class="fc">&nbsp;        accounts.save(user);</b>
+<b class="fc">&nbsp;        if (accounts.authorized(previousID)){</b>
+<b class="nc">&nbsp;            accounts.addAuthorizedID(user.getId());</b>
+&nbsp;        }
+<b class="fc">&nbsp;        view.back(user.getId());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Καταχωρεί την αξιολόγηση στο σύστημα και
+&nbsp;     * επιστρέφει στην αρχική οθόνη
+&nbsp;     * θέτοντας την ανταλλαγή ως ανεπιτυχή
+&nbsp;     * και απελευθερόνοντας την θέση
+&nbsp;     */
+&nbsp;    public void onSubmit(){
+<b class="fc">&nbsp;        double rating = view.getRating();</b>
+<b class="fc">&nbsp;        String comments = view.getComments();</b>
+<b class="fc">&nbsp;        Rating rat = new Rating(rating,comments);</b>
+<b class="fc">&nbsp;        User user =((SearchingUser) this.attachedUser).getSpotReservation().getParkingSpot().getUser();</b>
+<b class="fc">&nbsp;        user.addRating(rat);</b>
+<b class="fc">&nbsp;        view.showToastMessage(&quot;Rating submited!&quot;);</b>
+<b class="fc">&nbsp;        SpotReservation sr = ((SearchingUser) this.attachedUser).getSpotReservation();</b>
+<b class="fc">&nbsp;        ((SearchingUser) this.attachedUser).declareFalseSpot();</b>
+<b class="fc">&nbsp;        spots.delete(sr.getParkingSpot());</b>
+<b class="fc">&nbsp;        int previousID = this.attachedUser.getId();</b>
+<b class="fc">&nbsp;        user = new User(this.attachedUser);</b>
+<b class="fc">&nbsp;        accounts.save(user);</b>
+<b class="fc">&nbsp;        if (accounts.authorized(previousID)){</b>
+<b class="nc">&nbsp;            accounts.addAuthorizedID(user.getId());</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        view.submit(user.getId());</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-01-07 18:37</div>
+</div>
+</body>
+</html>
